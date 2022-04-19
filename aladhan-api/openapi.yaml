@@ -1,0 +1,11 @@
+openapi: 3.0.3
+
+info:
+  title: Islamic Network - Prayer Times API
+  version: 1.0.0
+  description:
+    $ref: description.md
+servers:
+  - url: 'https'
+paths:
+

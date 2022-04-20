@@ -2,7 +2,7 @@ openapi: '3.0.2'
 info:
   title: Prayer Times API
   description: AlAdhan.com Prayer Times API OpenAPI spec
-  version: 0.0.2-draft
+  version: 0.0.3-draft
 servers:
   - url: https://api.aladhan.com/v1
 components:
@@ -638,8 +638,10 @@ components:
 
     code:
       type: integer
+      example: 200
     status:
       type: string
+      example: "OK"
 
     calendar_data:
       type: array
@@ -662,78 +664,100 @@ components:
       properties:
         Fajr:
           type: string
+          example: "02:52 (BST)"
         Sunrise:
           type: string
+          example: "05:33 (BST)"
         Dhuhr:
           type: string
+          example: "13:18 (BST)"
         Asr:
           type: string
+          example: "17:31 (BST)"
         Sunset:
           type: string
+          example: "20:11"
         Maghrib:
           type: string
+          example: "20:10"
         Isha:
           type: string
+          example: "22:11"
         Imsak:
           type: string
+          example: "03:33"
         Midnight:
           type: string
+          example: "00:58"
     date:
       type: object
       properties:
         readable:
           type: string
+          example: "20 Apr 2022"
         timestamp:
           type: string
+          example: "1650495506"
         gregorian:
           type: object
           properties:
             date:
-              $ref: "#/components/schemas/returned_date"
+              $ref: "#/components/schemas/returned_date_en"
             format:
               $ref: "#/components/schemas/format"
             day:
-              $ref: "#/components/schemas/day"
+              $ref: "#/components/schemas/day_en"
             weekday:
               $ref: "#/components/schemas/weekday_en"
             month:
               $ref: "#/components/schemas/month_en"
             year:
-              $ref: "#/components/schemas/year"
+              $ref: "#/components/schemas/year_en"
             designation:
-              $ref: "#/components/schemas/designation"
+              $ref: "#/components/schemas/designation_en"
         hijri:
           type: object
           properties:
             date:
-              $ref: "#/components/schemas/returned_date"
+              $ref: "#/components/schemas/returned_date_ar"
             format:
               $ref: "#/components/schemas/format"
             day:
-              $ref: "#/components/schemas/day"
+              $ref: "#/components/schemas/day_ar"
             weekday:
               $ref: "#/components/schemas/weekday_en_ar"
             month:
               $ref: "#/components/schemas/month_en_ar"
             year:
-              $ref: "#/components/schemas/year"
+              $ref: "#/components/schemas/year_ar"
             designation:
-              $ref: "#/components/schemas/designation"
+              $ref: "#/components/schemas/designation_ar"
             holidays:
               type: array
               items:
                 type: string
-    returned_date:
+                example: "1st Day of Ramadan"
+    returned_date_en:
       type: string
+      example: "20-04-2022"
+    returned_date_ar:
+      type: string
+      example: "17-09-1443"
     format:
       type: string
-    day:
+      example: "DD-MM-YYYY"
+    day_en:
       type: string
+      example: "20"
+    day_ar:
+      type: string
+      example: "17"
     weekday_en:
       type: object
       properties:
         en:
           type: string
+          example: "Wednesday"
           description: >
             English name of weekday
     weekday_en_ar:
@@ -741,10 +765,12 @@ components:
       properties:
         en:
           type: string
+          example: "Al Arba'a"
           description: >
             English name of weekday
         ar:
-          type: string
+          type: string          
+          example: "الاربعاء"
           description: >
             Arabic name of weekday
     month_en:    
@@ -752,8 +778,10 @@ components:
       properties:
         number:
           type: integer
+          example: 4
         en:
           type: string
+          example: "April"
           description: >
             English name of the month
     month_en_ar:    
@@ -761,23 +789,41 @@ components:
       properties:
         number:
           type: integer
+          example: 9
         en:
           type: string
+          example: "Ramaḍān"
           description: >
             English name of the month
         ar:
           type: string
+          example: "رَمَضان"
           description: >
             Arabic name of the month
-    year:
+    year_en:
       type: string
-    designation:
+      example: "2022"
+    year_ar:
+      type: string
+      example: "1443"
+    designation_en:
       type: object
       properties:
         abbreviated:
           type: string
+          example: "AD"
         expanded:
-          type: string    
+          type: string
+          example: "Anno Domini"
+    designation_ar:
+      type: object
+      properties:
+        abbreviated:
+          type: string
+          example: "AH"
+        expanded:
+          type: string
+          example: "Anno Hegirae"
     meta:
       type: object
       properties:
@@ -799,10 +845,13 @@ components:
           $ref: "#/components/schemas/offset"
     latitude:
       type: number
+      example: 51.75865125
     longitude:
       type: number
+      example: -1.25387785
     timezone:
       type: string
+      example: "Europe/London"
       description: >
         Timezone for all returned times
     method:
@@ -810,42 +859,58 @@ components:
       properties:
         id:
           type: integer
+          example: 4
         name:
           type: string
+          example: "Umm Al-Qura University, Makkah"
         params:
           type: object
           properties:
             Fajr:
-              type: number
+              type: string
+              example: 18.5
             Isha:
-              type: number
+              type: string
+              example: "90 min"
     latitudeAdjustmentMethod:
       type: string
+      example: "ANGLE_BASED"
     midnightMode:
       type: string
+      example: "STANDARD"
     school:
       type: string
+      example: "STANDARD"
     offset:
       type: object
       properties:
         Imsak:
-          type: integer
+          type: string
+          example: "5"
         Fajr:
-          type: integer
+          type: string
+          example: "3"
         Sunrise:
-          type: integer
+          type: string
+          example: "5"
         Dhuhr:
-          type: integer
+          type: string
+          example: "7"
         Asr:
-          type: integer
+          type: string
+          example: "9"
         Maghrib:
-          type: integer
+          type: string
+          example: "-1"
         Sunset:
-          type: integer
+          type: string
+          example: "0"
         Isha:
-          type: integer
+          type: string
+          example: "30 min"
         Midnight:
-          type: integer        
+          type: string
+          example: "-6"
 paths:
   /calendar:
     get:

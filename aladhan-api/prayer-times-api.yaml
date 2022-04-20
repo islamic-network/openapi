@@ -2,7 +2,7 @@ openapi: '3.0.2'
 info:
   title: Prayer Times API
   description: AlAdhan.com Prayer Times API OpenAPI spec
-  version: 0.0.1-draft
+  version: 0.0.2-draft
 servers:
   - url: https://api.aladhan.com/v1
 components:
@@ -851,6 +851,8 @@ paths:
     get:
       summary: Prayer Times Calendar
       description: Returns all prayer times for a specific calendar month.
+      tags:
+        - Full Calendar
       parameters:
         - $ref: "#/components/parameters/latitude"
         - $ref: "#/components/parameters/longitude"
@@ -877,6 +879,8 @@ paths:
     get:
       summary: Prayer Times Calendar by address
       description: Returns all prayer times for a specific calendar month at a particular address.
+      tags:
+        - Full Calendar
       parameters:
         - $ref: "#/components/parameters/address"
         - $ref: "#/components/parameters/gregorian_month"
@@ -901,6 +905,8 @@ paths:
     get:
       summary: Prayer Times Calendar by city
       description: Returns all prayer times for a specific calendar month by City.
+      tags:
+        - Full Calendar
       parameters:
         - $ref: "#/components/parameters/city"
         - $ref: "#/components/parameters/country"
@@ -926,6 +932,8 @@ paths:
     get:
       summary: Prayer Times Calendar
       description: Returns all prayer times for a specific calendar month.
+      tags:
+        - Full Calendar
       parameters:
         - $ref: "#/components/parameters/latitude"
         - $ref: "#/components/parameters/longitude"
@@ -952,6 +960,8 @@ paths:
     get:
       summary: Prayer Times Hijri Calendar by address
       description: Returns all prayer times for a specific Hijri calendar month at a particular address.
+      tags:
+        - Full Calendar
       parameters:
         - $ref: "#/components/parameters/latitude"
         - $ref: "#/components/parameters/longitude"
@@ -978,6 +988,8 @@ paths:
     get:
       summary: Prayer Times Hijri Calendar by city
       description: Returns all prayer times for a specific Hijri calendar month by City.
+      tags:
+        - Full Calendar
       parameters:
         - $ref: "#/components/parameters/latitude"
         - $ref: "#/components/parameters/longitude"
@@ -1000,63 +1012,12 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/calendar_response"
-  /currentDate:
-    get:
-      summary: Current date
-      description: Returns the current date (in the DD-MM-YYYY format) for the specified time zone
-      parameters:
-        - $ref: "#/components/parameters/zone"
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/string_response"
-  /currentTime:
-    get:
-      summary: Current time
-      description: Returns the current time (in the HH:MM format) for the specified time zone
-      parameters:
-        - $ref: "#/components/parameters/zone"
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/string_response"
-  /currentTimestamp:
-    get:
-      summary: Current UNIX timestamp
-      description: Returns the current UNIX timestamp for the specified time zone
-      parameters:
-        - $ref: "#/components/parameters/zone"
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/string_response"
-  /methods:
-    get:
-      summary: Prayer Times Methods
-      description: >
-        Returns all the prayer times calculation methods supported by this API.
-        For more information on how to use custom methods,
-        see [https://aladhan.com/calculation-methods](https://aladhan.com/calculation-methods).
-      responses:
-        200:
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/methods_response"
   /timings:
     get:
       summary: Prayer Times for date
       description: Returns all prayer times for a specific date.
+      tags:
+        - Single Day
       parameters:
         - $ref: "#/components/parameters/latitude"
         - $ref: "#/components/parameters/longitude"
@@ -1080,6 +1041,8 @@ paths:
     get:
       summary: Prayer Times for date
       description: Returns all prayer times for a specific date.
+      tags:
+        - Single Day
       parameters:
         - $ref: "#/components/parameters/date_or_timestamp"
         - $ref: "#/components/parameters/latitude"
@@ -1104,6 +1067,8 @@ paths:
     get:
       summary: Timings By Address
       description: Returns all prayer times for a specific date at a particular address.
+      tags:
+        - Single Day
       parameters:
         - $ref: "#/components/parameters/address"
         - $ref: "#/components/parameters/method"
@@ -1126,6 +1091,8 @@ paths:
     get:
       summary: Timings By Address
       description: Returns all prayer times for a specific date at a particular address.
+      tags:
+        - Single Day
       parameters:
         - $ref: "#/components/parameters/date_or_timestamp"
         - $ref: "#/components/parameters/address"
@@ -1149,6 +1116,8 @@ paths:
     get:
       summary: Timings By City
       description: Returns all prayer times for a specific date in a particular city.
+      tags:
+        - Single Day
       parameters:
         - $ref: "#/components/parameters/city"
         - $ref: "#/components/parameters/country"
@@ -1172,6 +1141,8 @@ paths:
     get:
       summary: Timings By City
       description: Returns all prayer times for a specific date in a particular city.
+      tags:
+        - Single Day
       parameters:
         - $ref: "#/components/parameters/date_or_timestamp"
         - $ref: "#/components/parameters/city"
@@ -1192,3 +1163,64 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/timings_response"
+  /currentDate:
+    get:
+      summary: Current date
+      description: Returns the current date (in the DD-MM-YYYY format) for the specified time zone
+      tags:
+        - Utility
+      parameters:
+        - $ref: "#/components/parameters/zone"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/string_response"
+  /currentTime:
+    get:
+      summary: Current time
+      description: Returns the current time (in the HH:MM format) for the specified time zone
+      tags:
+        - Utility
+      parameters:
+        - $ref: "#/components/parameters/zone"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/string_response"
+  /currentTimestamp:
+    get:
+      summary: Current UNIX timestamp
+      description: Returns the current UNIX timestamp for the specified time zone
+      tags:
+        - Utility
+      parameters:
+        - $ref: "#/components/parameters/zone"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/string_response"
+  /methods:
+    get:
+      summary: Prayer Times Methods
+      description: >
+        Returns all the prayer times calculation methods supported by this API.
+        For more information on how to use custom methods,
+        see [https://aladhan.com/calculation-methods](https://aladhan.com/calculation-methods).
+      tags:
+        - Utility
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/methods_response"

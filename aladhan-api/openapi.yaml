@@ -5,7 +5,13 @@ info:
   version: 1.0.0
   description:
     $ref: description.md
+
+tags:
+  - name: Prayer Times Methods
+
 servers:
   - url: 'https'
-paths:
 
+paths:
+  /v1/methods:
+    $ref: api/prayer-times-methods/definition.yaml

@@ -14,13 +14,13 @@ get:
       content:
         application/json:
           schema:
-            $ref: "#/components/schemas/success-response"
+            $ref: '#/schemas/responses/methods-success'
           example:
-            $ref: ./success-example.json
+            $ref: './success-example.json'
 
-components:
-  schemas:
-    success-response:
+schemas:
+  responses:
+    methods-success:
       type: object
       required:
         - code

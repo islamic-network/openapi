@@ -7,11 +7,17 @@ info:
     $ref: description.md
 
 tags:
+  - name: Current Date/Time
   - name: Prayer Times Methods
 
 servers:
-  - url: 'https'
+  - url: 'http://api.aladhan.com'
+  - url: 'https://api.aladhan.com'
 
 paths:
+  /v1/currentDate:
+    $ref: 'api/current-date-time/definition.yaml#/current-date'
+  /v1/currentTimestamp:
+    $ref: 'api/current-date-time/definition.yaml#/current-timestamp'
   /v1/methods:
-    $ref: api/prayer-times-methods/definition.yaml
+    $ref: 'api/prayer-times-methods/definition.yaml'

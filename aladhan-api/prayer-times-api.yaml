@@ -117,23 +117,23 @@ components:
 
         * `5` - Egyptian General Authority of Survey
 
-        * `7` - Institute of Geophysics, University of Tehran
+        * `6` - Institute of Geophysics, University of Tehran
 
-        * `8` - Gulf Region
+        * `7` - Gulf Region
 
-        * `9` - Kuwait
+        * `8` - Kuwait
 
-        * `10` - Qatar
+        * `9` - Qatar
 
-        * `11` - Majlis Ugama Islam Singapura, Singapore
+        * `10` - Majlis Ugama Islam Singapura, Singapore
 
-        * `12` - Union Organization islamic de France
+        * `11` - Union Organization islamic de France
         
-        * `13` - Diyanet İşleri Başkanlığı, Turkey
+        * `12` - Diyanet İşleri Başkanlığı, Turkey
 
-        * `14` - Spiritual Administration of Muslims of Russia
+        * `13` - Spiritual Administration of Muslims of Russia
 
-        * `15` - Moonsighting Committee Worldwide (also requires shafaq paramteer)
+        * `14` - Moonsighting Committee Worldwide (also requires shafaq paramteer)
 
         * `99` - Custom. See [https://aladhan.com/calculation-methods](https://aladhan.com/calculation-methods)
 
@@ -157,7 +157,6 @@ components:
           - 12
           - 13
           - 14
-          - 15
           - 99
     shafaq:
       in: query

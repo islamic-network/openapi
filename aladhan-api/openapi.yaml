@@ -11,8 +11,8 @@ tags:
   - name: Prayer Times Methods
 
 servers:
-  - url: 'http://api.aladhan.com'
-  - url: 'https://api.aladhan.com'
+  - url: "http://api.aladhan.com"
+  - url: "https://api.aladhan.com"
 
 paths:
   /v1/currentDate:

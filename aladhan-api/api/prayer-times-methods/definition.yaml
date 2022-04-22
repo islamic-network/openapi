@@ -1,0 +1,38 @@
+summary: Prayer Times Methods
+
+get:
+  tags:
+    - Prayer Times Methods
+  summary: Prayer Times Methods
+  description: |
+    Returns all the prayer times calculation methods & details supported by Islamic Network API. \
+
+    Furthermore, [you can use customize the methods & create your own if needed](https://aladhan.com/calculation-methods).
+  responses:
+    200:
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: '#/schemas/responses/methods-success'
+          example:
+            $ref: './success-example.json'
+
+schemas:
+  responses:
+    methods-success:
+      type: object
+      required:
+        - code
+        - status
+        - data
+      properties:
+        code:
+          type: number
+          description: The response status code.
+        status:
+          type: string
+          description: The response status description.
+        data:
+          type: object
+          description: Contains a bunch of key-object mapping containing details of different prayer time calculation methods.

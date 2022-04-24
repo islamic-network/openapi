@@ -114,6 +114,7 @@ schemas:
           description: The response status description.
         data:
           type: string
+          format: time
           pattern: hh:mm
           description: Current time in the specified timezone.
     current-timestamp-success:

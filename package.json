@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "redoc": "^2.0.0-rc.66",
     "redoc-cli": "^0.13.10"
   }
 }

@@ -17,6 +17,8 @@ servers:
 paths:
   /v1/currentDate:
     $ref: 'api/current-date-time/definition.yaml#/current-date'
+  /v1/currentTime:
+    $ref: 'api/current-date-time/definition.yaml#/current-time'
   /v1/currentTimestamp:
     $ref: 'api/current-date-time/definition.yaml#/current-timestamp'
   /v1/methods:

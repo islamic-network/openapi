@@ -22,6 +22,30 @@ current-date:
                 "data": "23-08-2017"
               }
 
+current-time:
+  summary: Current Time
+  parameters:
+    - $ref: '#/schemas/parameters/zone'
+  get:
+    tags:
+      - Current Date/Time
+    summary: Current Time
+    description: |
+      Returns the current time for the specified time zone.
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: '#/schemas/responses/current-time-success'
+            example:
+              {
+                "code": 200,
+                "status": "OK",
+                "data": "05:32"
+              }
+
 current-timestamp:
   summary: Current Timestamp
   parameters:
@@ -75,6 +99,24 @@ schemas:
           format: date
           pattern: dd-mm-yyyy
           description: Current date in the specified timezone.
+    current-time-success:
+      type: object
+      required:
+        - code
+        - status
+        - data
+      properties:
+        code:
+          type: number
+          description: The response status code.
+        status:
+          type: string
+          description: The response status description.
+        data:
+          type: string
+          format: time
+          pattern: hh:mm
+          description: Current time in the specified timezone.
     current-timestamp-success:
       type: object
       required:

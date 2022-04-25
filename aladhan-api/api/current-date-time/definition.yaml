@@ -71,6 +71,15 @@ current-timestamp:
               }
 
 schemas:
+  components:
+    code:
+      type: integer
+      description: The response status code.
+      example: 200
+    status:
+      type: string
+      description: The response status description.
+      example: "OK"
   parameters:
     zone:
       name: zone
@@ -89,16 +98,15 @@ schemas:
         - data
       properties:
         code:
-          type: number
-          description: The response status code.
+          $ref: "#/schemas/components/code"
         status:
-          type: string
-          description: The response status description.
+          $ref: "#/schemas/components/status"
         data:
           type: string
           format: date
           pattern: dd-mm-yyyy
           description: Current date in the specified timezone.
+          example: "23-08-2017"
     current-time-success:
       type: object
       required:
@@ -107,16 +115,15 @@ schemas:
         - data
       properties:
         code:
-          type: number
-          description: The response status code.
+          $ref: "#/schemas/components/code"
         status:
-          type: string
-          description: The response status description.
+          $ref: "#/schemas/components/status"
         data:
           type: string
           format: time
           pattern: hh:mm
           description: Current time in the specified timezone.
+          example: "05:32"
     current-timestamp-success:
       type: object
       required:
@@ -125,11 +132,10 @@ schemas:
         - data
       properties:
         code:
-          type: number
-          description: The response status code.
+          $ref: "#/schemas/components/code"
         status:
-          type: string
-          description: The response status description.
+          $ref: "#/schemas/components/status"
         data:
           type: string
           description: Current epoch/unix timestamp in the specified timezone.
+          example: "1503495668"

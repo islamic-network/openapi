@@ -1,0 +1,25 @@
+openapi: 3.0.3
+
+info:
+  title: Islamic Network - Prayer Times API
+  version: 1.0.0
+  description:
+    $ref: description.md
+
+tags:
+  - name: Current Date/Time
+  - name: Prayer Times Methods
+
+servers:
+  - url: "http://api.aladhan.com"
+  - url: "https://api.aladhan.com"
+
+paths:
+  /v1/currentDate:
+    $ref: 'api/current-date-time/definition.yaml#/current-date'
+  /v1/currentTime:
+    $ref: 'api/current-date-time/definition.yaml#/current-time'
+  /v1/currentTimestamp:
+    $ref: 'api/current-date-time/definition.yaml#/current-timestamp'
+  /v1/methods:
+    $ref: 'api/prayer-times-methods/definition.yaml'

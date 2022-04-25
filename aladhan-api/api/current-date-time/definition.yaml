@@ -1,0 +1,135 @@
+current-date:
+  summary: Current Date
+  parameters:
+    - $ref: '#/schemas/parameters/zone'
+  get:
+    tags:
+      - Current Date/Time
+    summary: Current Date
+    description: |
+      Returns the current date for the specified time zone.
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: '#/schemas/responses/current-date-success'
+            example:
+              {
+                "code": 200,
+                "status": "OK",
+                "data": "23-08-2017"
+              }
+
+current-time:
+  summary: Current Time
+  parameters:
+    - $ref: '#/schemas/parameters/zone'
+  get:
+    tags:
+      - Current Date/Time
+    summary: Current Time
+    description: |
+      Returns the current time for the specified time zone.
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: '#/schemas/responses/current-time-success'
+            example:
+              {
+                "code": 200,
+                "status": "OK",
+                "data": "05:32"
+              }
+
+current-timestamp:
+  summary: Current Timestamp
+  parameters:
+    - $ref: '#/schemas/parameters/zone'
+  get:
+    tags:
+      - Current Date/Time
+    summary: Current Timestamp
+    description: |
+      Returns the current [unix/epoch](https://en.wikipedia.org/wiki/Unix_time) timestamp for the specified time zone.
+    responses:
+      200:
+        description: Success
+        content:
+          application/json:
+            schema:
+              $ref: '#/schemas/responses/current-timestamp-success'
+            example:
+              {
+                "code": 200,
+                "status": "OK",
+                "data": "1503495668"
+              }
+
+schemas:
+  parameters:
+    zone:
+      name: zone
+      in: query
+      required: true
+      description: A valid timezone as specified [here](http://php.net/manual/en/timezones.php).
+      schema:
+        type: string
+        example: Europe/London
+  responses:
+    current-date-success:
+      type: object
+      required:
+        - code
+        - status
+        - data
+      properties:
+        code:
+          type: number
+          description: The response status code.
+        status:
+          type: string
+          description: The response status description.
+        data:
+          type: string
+          format: date
+          pattern: dd-mm-yyyy
+          description: Current date in the specified timezone.
+    current-time-success:
+      type: object
+      required:
+        - code
+        - status
+        - data
+      properties:
+        code:
+          type: number
+          description: The response status code.
+        status:
+          type: string
+          description: The response status description.
+        data:
+          type: string
+          format: time
+          pattern: hh:mm
+          description: Current time in the specified timezone.
+    current-timestamp-success:
+      type: object
+      required:
+        - code
+        - status
+        - data
+      properties:
+        code:
+          type: number
+          description: The response status code.
+        status:
+          type: string
+          description: The response status description.
+        data:
+          type: string
+          description: Current epoch/unix timestamp in the specified timezone.

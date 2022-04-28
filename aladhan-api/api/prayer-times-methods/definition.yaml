@@ -1,38 +1,432 @@
 summary: Prayer Times Methods
+paths:
+  prayer_times_methods:
+    get:
+      tags:
+        - Prayer Times Methods
+      summary: Prayer Times Methods
+      description: |
+        Returns all the prayer times calculation methods & details supported by Islamic Network API. \
 
-get:
-  tags:
-    - Prayer Times Methods
-  summary: Prayer Times Methods
-  description: |
-    Returns all the prayer times calculation methods & details supported by Islamic Network API. \
-
-    Furthermore, [you can use customize the methods & create your own if needed](https://aladhan.com/calculation-methods).
-  responses:
-    200:
-      description: Success
-      content:
-        application/json:
-          schema:
-            $ref: '#/schemas/responses/methods-success'
-          example:
-            $ref: './success-example.json'
-
-schemas:
-  responses:
-    methods-success:
-      type: object
-      required:
-        - code
-        - status
-        - data
-      properties:
-        code:
-          type: number
-          description: The response status code.
-        status:
-          type: string
-          description: The response status description.
-        data:
-          type: object
-          description: Contains a bunch of key-object mapping containing details of different prayer time calculation methods.
+        Furthermore, [you can use customize the methods & create your own if needed](https://aladhan.com/calculation-methods).
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/responses/methods-success'
+              example:
+                $ref: './success-example.json'
+components:
+  schemas: 
+    latitude:
+      type: number
+      example: 51.75865125
+    longitude:
+      type: number
+      example: -1.25387785
+    responses:
+      methods-success:
+        type: object
+        required:
+          - code
+          - status
+          - data
+        properties:
+          code:
+            type: number
+            description: The response status code.
+            example: 200
+          status:
+            type: string
+            description: The response status description.
+            example: "OK"
+          data:
+            type: object
+            description: Contains a collection of key-object mapping containing details of different prayer time calculation methods.
+            properties:
+              MWL:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 3
+                  name:
+                    type: string
+                    example: "Muslim World League"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 18
+                      Isha:
+                        type: number
+                        example: 17
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              ISNA:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 2
+                  name:
+                    type: string
+                    example: "Islamic Society of North America (ISNA)"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 15
+                      Isha:
+                        type: number
+                        example: 15
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              EGYPT:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 5
+                  name:
+                    type: string
+                    example: "Egyptian General Authority of Survey"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 19.5
+                      Isha:
+                        type: number
+                        example: 17.5
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              MAKKAH:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 4
+                  name:
+                    type: string
+                    example: "Umm Al-Qura University, Makkah"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 18.5
+                      Isha:
+                        type: string
+                        example: "90 min"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              KARACHI:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: "University of Islamic Sciences, Karachi"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 18
+                      Isha:
+                        type: number
+                        example: 18
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              TEHRAN:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 7
+                  name:
+                    type: string
+                    example: "Institute of Geophysics, University of Tehran"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 17.7
+                      Maghrib:
+                        type: number
+                        example: 4.5
+                      Isha:
+                        type: number
+                        example: 14
+                      Midnight:
+                        type: string
+                        example: "JAFARI"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              JAFARI:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 0
+                  name:
+                    type: string
+                    example: "Shia Ithna-Ashari, Leva Institute, Qum"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 16
+                      Maghrib:
+                        type: number
+                        example: 4
+                      Isha:
+                        type: number
+                        example: 14
+                      Midnight:
+                        type: string
+                        example: "JAFARI"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              GULF:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 8
+                  name:
+                    type: string
+                    example: "Gulf Region"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 19.5
+                      Isha:
+                        type: string
+                        example: "90 min"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              KUWAIT:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 9
+                  name:
+                    type: string
+                    example: "Kuwait"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 18
+                      Isha:
+                        type: number
+                        example: 17.5
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              QATAR:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 10
+                  name:
+                    type: string
+                    example: "Qatar"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 10
+                      Isha:
+                        type: string
+                        example: "90 min"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              SINGAPORE:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 11
+                  name:
+                    type: string
+                    example: "Majlis Ugama Islam Singapura, Singapore"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 20
+                      Isha:
+                        type: number
+                        example: 18
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              FRANCE:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 12
+                  name:
+                    type: string
+                    example: "Union Organization Islamic de France"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 12
+                      Isha:
+                        type: number
+                        example: 12
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              TURKEY:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 13
+                  name:
+                    type: string
+                    example: "Diyanet İşleri Başkanlığı, Turkey"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 18
+                      Isha:
+                        type: number
+                        example: 17
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              RUSSIA:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 14
+                  name:
+                    type: string
+                    example: "Spiritual Administration of Muslims of Russia"
+                  params:
+                    type: object
+                    properties:
+                      Fajr:
+                        type: number
+                        example: 16
+                      Isha:
+                        type: number
+                        example: 15
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              MOONSIGHTING:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 15
+                  name:
+                    type: string
+                    example: "Moonsighting Committee Worldwide (Moonsighting.com)"
+                  params:
+                    type: object
+                    properties:
+                      shafaq:
+                        type: string
+                        example: "general"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"

@@ -10,3 +10,8 @@ Before proceeding, install the following tools:
 
 To generate the documentation, run the command in the project root: \
 ```redoc-cli bundle --options.pathInMiddlePanel --output ./public/prayer-times.html ./aladhan-api/openapi.yaml```
+
+
+## Support and Questions
+Web - https://community.islamic.network
+Chat - https://discord.gg/FwUy69M

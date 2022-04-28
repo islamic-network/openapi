@@ -568,7 +568,7 @@ paths:
       summary: Prayer Times Calendar
       description: Returns all prayer times for a specific calendar month.
       tags:
-        - Full Calendar
+        - Monthly / Annual Calendar
       parameters:
         - $ref: "#/components/parameters/latitude"
         - $ref: "#/components/parameters/longitude"
@@ -596,7 +596,7 @@ paths:
       summary: Prayer Times Calendar by address
       description: Returns all prayer times for a specific calendar month at a particular address.
       tags:
-        - Full Calendar
+        - Monthly / Annual Calendar
       parameters:
         - $ref: "#/components/parameters/address"
         - $ref: "#/components/parameters/gregorian_month"
@@ -622,7 +622,7 @@ paths:
       summary: Prayer Times Calendar by city
       description: Returns all prayer times for a specific calendar month by City.
       tags:
-        - Full Calendar
+        - Monthly / Annual Calendar
       parameters:
         - $ref: "#/components/parameters/city"
         - $ref: "#/components/parameters/country"
@@ -649,7 +649,7 @@ paths:
       summary: Prayer Times Calendar
       description: Returns all prayer times for a specific calendar month.
       tags:
-        - Full Calendar
+        - Monthly / Annual Calendar
       parameters:
         - $ref: "#/components/parameters/latitude"
         - $ref: "#/components/parameters/longitude"
@@ -677,7 +677,7 @@ paths:
       summary: Prayer Times Hijri Calendar by address
       description: Returns all prayer times for a specific Hijri calendar month at a particular address.
       tags:
-        - Full Calendar
+        - Monthly / Annual Calendar
       parameters:
         - $ref: "#/components/parameters/latitude"
         - $ref: "#/components/parameters/longitude"
@@ -705,7 +705,7 @@ paths:
       summary: Prayer Times Hijri Calendar by city
       description: Returns all prayer times for a specific Hijri calendar month by City.
       tags:
-        - Full Calendar
+        - Monthly / Annual Calendar
       parameters:
         - $ref: "#/components/parameters/latitude"
         - $ref: "#/components/parameters/longitude"
@@ -733,7 +733,7 @@ paths:
       summary: Prayer Times for date
       description: Returns all prayer times for a specific date.
       tags:
-        - Single Day
+        - Daily
       parameters:
         - $ref: "#/components/parameters/latitude"
         - $ref: "#/components/parameters/longitude"
@@ -758,7 +758,7 @@ paths:
       summary: Prayer Times for date
       description: Returns all prayer times for a specific date.
       tags:
-        - Single Day
+        - Daily
       parameters:
         - $ref: "#/components/parameters/date_or_timestamp"
         - $ref: "#/components/parameters/latitude"
@@ -784,7 +784,7 @@ paths:
       summary: Timings By Address
       description: Returns all prayer times for a specific date at a particular address.
       tags:
-        - Single Day
+        - Daily
       parameters:
         - $ref: "#/components/parameters/address"
         - $ref: "#/components/parameters/method"
@@ -808,7 +808,7 @@ paths:
       summary: Timings By Address
       description: Returns all prayer times for a specific date at a particular address.
       tags:
-        - Single Day
+        - Daily
       parameters:
         - $ref: "#/components/parameters/date_or_timestamp"
         - $ref: "#/components/parameters/address"
@@ -833,7 +833,7 @@ paths:
       summary: Timings By City
       description: Returns all prayer times for a specific date in a particular city.
       tags:
-        - Single Day
+        - Daily
       parameters:
         - $ref: "#/components/parameters/city"
         - $ref: "#/components/parameters/country"
@@ -858,7 +858,7 @@ paths:
       summary: Timings By City
       description: Returns all prayer times for a specific date in a particular city.
       tags:
-        - Single Day
+        - Daily
       parameters:
         - $ref: "#/components/parameters/date_or_timestamp"
         - $ref: "#/components/parameters/city"

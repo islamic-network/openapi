@@ -54,17 +54,17 @@ paths:
     $ref: "api/prayer-times/definition.yaml#/paths/hijriCalendar"
   /v1/hijriCalendarByAddress:
     $ref: "api/prayer-times/definition.yaml#/paths/hijriCalendarByAddress"
-  /hijriCalendarByCity:
+  /v1/hijriCalendarByCity:
     $ref: "api/prayer-times/definition.yaml#/paths/hijriCalendarByCity"
-  /timings:
+  /v1/timings:
     $ref: "api/prayer-times/definition.yaml#/paths/timings"
-  /timings/{date_or_timestamp}:
+  /v1/timings/{date_or_timestamp}:
     $ref: "api/prayer-times/definition.yaml#/paths/timings_date_or_timestamp"
-  /timingsByAddress:
+  /v1/timingsByAddress:
     $ref: "api/prayer-times/definition.yaml#/paths/timingsByAddress"
-  /timingsByAddress/{date_or_timestamp}:
+  /v1/timingsByAddress/{date_or_timestamp}:
     $ref: "api/prayer-times/definition.yaml#/paths/timingsByAddress_date_or_timestamp"
-  /timingsByCity:
+  /v1/timingsByCity:
     $ref: "api/prayer-times/definition.yaml#/paths/timingsByCity"
-  /timingsByCity/{date_or_timestamp}:
+  /v1/timingsByCity/{date_or_timestamp}:
     $ref: "api/prayer-times/definition.yaml#/paths/timingsByCity_date_or_timestamp"

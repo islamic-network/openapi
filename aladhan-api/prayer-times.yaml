@@ -10,12 +10,6 @@ info:
     
     Please note that prayer timings might not always match your local mosque or government authority. Their timings are likely tuned or adjusted. Please see `https://aladhan.com/calculation-methods` for more details.
 
-tags:
-  - name: Prayer Times
-  - name: Prayer Times Calendar
-  - name: Current Date/Time
-  - name: Prayer Times Methods
-
 servers:
   - url: "http://api.aladhan.com"
   - url: "https://api.aladhan.com"

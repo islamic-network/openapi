@@ -11,11 +11,6 @@ info:
 servers:
   - url: http://api.aladhan.com
   - url: https://api.aladhan.com
-tags:
-  - name: Prayer Times
-  - name: Prayer Times Calendar
-  - name: Current Date/Time
-  - name: Prayer Times Methods
 paths:
   /v1/timings/{date}:
     get:

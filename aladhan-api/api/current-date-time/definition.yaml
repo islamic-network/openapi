@@ -4,7 +4,7 @@ current-date:
     - $ref: '#/schemas/parameters/zone'
   get:
     tags:
-      - Current Date/Time
+      - Date and Time
     summary: Current Date
     description: |
       Returns the current date for the specified time zone.
@@ -28,7 +28,7 @@ current-time:
     - $ref: '#/schemas/parameters/zone'
   get:
     tags:
-      - Current Date/Time
+      - Date and Time
     summary: Current Time
     description: |
       Returns the current time for the specified time zone.
@@ -52,7 +52,7 @@ current-timestamp:
     - $ref: '#/schemas/parameters/zone'
   get:
     tags:
-      - Current Date/Time
+      - Date and Time
     summary: Current Timestamp
     description: |
       Returns the current [unix/epoch](https://en.wikipedia.org/wiki/Unix_time) timestamp for the specified time zone.

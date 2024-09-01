@@ -1,0 +1,1742 @@
+openapi: 3.0.3
+info:
+  title: AlAdhan - Prayer Times API
+  version: 1.0.0
+  description: |
+    A RESTful API to get islamic prayer times for a given day, month or year.
+
+    The API has several endpoints to assist developers. All the endpoints return JSON and are available over `http` and `https`.
+
+    Please note that prayer timings might not always match your local mosque or government authority. Their timings are likely tuned or adjusted. Please see `https://aladhan.com/calculation-methods` for more details.
+servers:
+  - url: http://api.aladhan.com
+  - url: https://api.aladhan.com
+tags:
+  - name: Current Date/Time
+  - name: Prayer Times Methods
+paths:
+  /v1/currentDate:
+    summary: Current Date
+    parameters:
+      - $ref: '#/components/parameters/zone'
+    get:
+      tags:
+        - Current Date/Time
+      summary: Current Date
+      description: |
+        Returns the current date for the specified time zone.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/current-date-success'
+              example:
+                code: 200
+                status: OK
+                data: 23-08-2017
+  /v1/currentTime:
+    summary: Current Time
+    parameters:
+      - $ref: '#/components/parameters/zone'
+    get:
+      tags:
+        - Current Date/Time
+      summary: Current Time
+      description: |
+        Returns the current time for the specified time zone.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/current-time-success'
+              example:
+                code: 200
+                status: OK
+                data: '05:32'
+  /v1/currentTimestamp:
+    summary: Current Timestamp
+    parameters:
+      - $ref: '#/components/parameters/zone'
+    get:
+      tags:
+        - Current Date/Time
+      summary: Current Timestamp
+      description: |
+        Returns the current [unix/epoch](https://en.wikipedia.org/wiki/Unix_time) timestamp for the specified time zone.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/current-timestamp-success'
+              example:
+                code: 200
+                status: OK
+                data: '1503495668'
+  /v1/methods:
+    get:
+      tags:
+        - Prayer Times Methods
+      summary: Prayer Times Methods
+      description: |
+        Returns all the prayer times calculation methods & details supported by Islamic Network API. \
+
+        Furthermore, [you can use customize the methods & create your own if needed](https://aladhan.com/calculation-methods).
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/methods-success'
+              example:
+                code: 200
+                status: OK
+                data:
+                  MWL:
+                    id: 3
+                    name: Muslim World League
+                    params:
+                      Fajr: 18
+                      Isha: 17
+                    location:
+                      latitude: 51.5194682
+                      longitude: -0.1360365
+                  ISNA:
+                    id: 2
+                    name: Islamic Society of North America (ISNA)
+                    params:
+                      Fajr: 15
+                      Isha: 15
+                    location:
+                      latitude: 39.70421229999999
+                      longitude: -86.39943869999999
+                  EGYPT:
+                    id: 5
+                    name: Egyptian General Authority of Survey
+                    params:
+                      Fajr: 19.5
+                      Isha: 17.5
+                    location:
+                      latitude: 30.0444196
+                      longitude: 31.2357116
+                  MAKKAH:
+                    id: 4
+                    name: Umm Al-Qura University, Makkah
+                    params:
+                      Fajr: 18.5
+                      Isha: 90 min
+                    location:
+                      latitude: 21.3890824
+                      longitude: 39.8579118
+                  KARACHI:
+                    id: 1
+                    name: University of Islamic Sciences, Karachi
+                    params:
+                      Fajr: 18
+                      Isha: 18
+                    location:
+                      latitude: 24.8614622
+                      longitude: 67.0099388
+                  TEHRAN:
+                    id: 7
+                    name: Institute of Geophysics, University of Tehran
+                    params:
+                      Fajr: 17.7
+                      Isha: 14
+                      Maghrib: 4.5
+                      Midnight: JAFARI
+                    location:
+                      latitude: 35.6891975
+                      longitude: 51.3889736
+                  JAFARI:
+                    id: 0
+                    name: Shia Ithna-Ashari, Leva Institute, Qum
+                    params:
+                      Fajr: 16
+                      Isha: 14
+                      Maghrib: 4
+                      Midnight: JAFARI
+                    location:
+                      latitude: 34.6415764
+                      longitude: 50.8746035
+                  GULF:
+                    id: 8
+                    name: Gulf Region
+                    params:
+                      Fajr: 19.5
+                      Isha: 90 min
+                    location:
+                      latitude: 24.1323638
+                      longitude: 53.3199527
+                  KUWAIT:
+                    id: 9
+                    name: Kuwait
+                    params:
+                      Fajr: 18
+                      Isha: 17.5
+                    location:
+                      latitude: 29.375859
+                      longitude: 47.9774052
+                  QATAR:
+                    id: 10
+                    name: Qatar
+                    params:
+                      Fajr: 18
+                      Isha: 90 min
+                    location:
+                      latitude: 25.2854473
+                      longitude: 51.5310398
+                  SINGAPORE:
+                    id: 11
+                    name: Majlis Ugama Islam Singapura, Singapore
+                    params:
+                      Fajr: 20
+                      Isha: 18
+                    location:
+                      latitude: 1.352083
+                      longitude: 103.819836
+                  FRANCE:
+                    id: 12
+                    name: Union Organization Islamic de France
+                    params:
+                      Fajr: 12
+                      Isha: 12
+                    location:
+                      latitude: 48.856614
+                      longitude: 2.3522219
+                  TURKEY:
+                    id: 13
+                    name: Diyanet İşleri Başkanlığı, Turkey (experimental)
+                    params:
+                      Fajr: 18
+                      Isha: 17
+                    location:
+                      latitude: 39.9333635
+                      longitude: 32.8597419
+                  RUSSIA:
+                    id: 14
+                    name: Spiritual Administration of Muslims of Russia
+                    params:
+                      Fajr: 16
+                      Isha: 15
+                    location:
+                      latitude: 54.73479099999999
+                      longitude: 55.9578555
+                  MOONSIGHTING:
+                    id: 15
+                    name: Moonsighting Committee Worldwide (Moonsighting.com)
+                    params:
+                      shafaq: general
+                  DUBAI:
+                    id: 16
+                    name: Dubai (experimental)
+                    params:
+                      Fajr: 18.2
+                      Isha: 18.2
+                    location:
+                      latitude: 25.0762677
+                      longitude: 55.087404
+                  JAKIM:
+                    id: 17
+                    name: Jabatan Kemajuan Islam Malaysia (JAKIM)
+                    params:
+                      Fajr: 20
+                      Isha: 18
+                    location:
+                      latitude: 3.139003
+                      longitude: 101.686855
+                  TUNISIA:
+                    id: 18
+                    name: Tunisia
+                    params:
+                      Fajr: 18
+                      Isha: 18
+                    location:
+                      latitude: 36.8064948
+                      longitude: 10.1815316
+                  ALGERIA:
+                    id: 19
+                    name: Algeria
+                    params:
+                      Fajr: 18
+                      Isha: 17
+                    location:
+                      latitude: 36.753768
+                      longitude: 3.0587561
+                  KEMENAG:
+                    id: 20
+                    name: Kementerian Agama Republik Indonesia
+                    params:
+                      Fajr: 20
+                      Isha: 18
+                    location:
+                      latitude: -6.2087634
+                      longitude: 106.845599
+                  MOROCCO:
+                    id: 21
+                    name: Morocco
+                    params:
+                      Fajr: 19
+                      Isha: 17
+                    location:
+                      latitude: 33.9715904
+                      longitude: -6.8498129
+                  PORTUGAL:
+                    id: 22
+                    name: Comunidade Islamica de Lisboa
+                    params:
+                      Fajr: 18
+                      Maghrib: 3 min
+                      Isha: 77 min
+                    location:
+                      latitude: 38.7222524
+                      longitude: -9.1393366
+                  JORDAN:
+                    id: 23
+                    name: Ministry of Awqaf, Islamic Affairs and Holy Places, Jordan
+                    params:
+                      Fajr: 18
+                      Maghrib: 5 min
+                      Isha: 18
+                    location:
+                      latitude: 31.9461222
+                      longitude: 35.923844
+                  CUSTOM:
+                    id: 99
+  /v1/calendar/{year}/{month}:
+    get:
+      summary: Prayer Times Calendar
+      description: Returns all prayer times for a specific calendar month.
+      tags:
+        - Monthly / Annual Calendar
+      parameters:
+        - $ref: '#/components/parameters/month'
+        - $ref: '#/components/parameters/year'
+        - $ref: '#/components/parameters/latitude'
+        - $ref: '#/components/parameters/longitude'
+        - $ref: '#/components/parameters/annual'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/calendar_response'
+  /v1/calendarByAddress/{year}/{month}:
+    get:
+      summary: Prayer Times Calendar by address
+      description: Returns all prayer times for a specific calendar month at a particular address.
+      tags:
+        - Monthly / Annual Calendar
+      parameters:
+        - $ref: '#/components/parameters/month'
+        - $ref: '#/components/parameters/year'
+        - $ref: '#/components/parameters/address'
+        - $ref: '#/components/parameters/x7xapikey'
+        - $ref: '#/components/parameters/annual'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/calendar_response'
+  /v1/calendarByCity/{year}/{month}:
+    get:
+      summary: Prayer Times Calendar by city
+      description: Returns all prayer times for a specific calendar month by City.
+      tags:
+        - Monthly / Annual Calendar
+      parameters:
+        - $ref: '#/components/parameters/month'
+        - $ref: '#/components/parameters/year'
+        - $ref: '#/components/parameters/city'
+        - $ref: '#/components/parameters/country'
+        - $ref: '#/components/parameters/state'
+        - $ref: '#/components/parameters/x7xapikey'
+        - $ref: '#/components/parameters/annual'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/calendar_response'
+  /v1/hijriCalendar/{year}/{month}:
+    get:
+      summary: Hijri Prayer Times Calendar
+      description: Returns all prayer times for a specific Hijri calendar month.
+      tags:
+        - Monthly / Annual Calendar
+      parameters:
+        - $ref: '#/components/parameters/month'
+        - $ref: '#/components/parameters/year'
+        - $ref: '#/components/parameters/latitude'
+        - $ref: '#/components/parameters/longitude'
+        - $ref: '#/components/parameters/annual'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/calendar_response'
+  /v1/hijriCalendarByAddress/{year}/{month}:
+    get:
+      summary: Prayer Times Hijri Calendar by address
+      description: Returns all prayer times for a specific Hijri calendar month at a particular address.
+      tags:
+        - Monthly / Annual Calendar
+      parameters:
+        - $ref: '#/components/parameters/month'
+        - $ref: '#/components/parameters/year'
+        - $ref: '#/components/parameters/address'
+        - $ref: '#/components/parameters/x7xapikey'
+        - $ref: '#/components/parameters/annual'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/calendar_response'
+  /v1/hijriCalendarByCity/{year}/{month}:
+    get:
+      summary: Prayer Times Hijri Calendar by city
+      description: Returns all prayer times for a specific Hijri calendar month by City.
+      tags:
+        - Monthly / Annual Calendar
+      parameters:
+        - $ref: '#/components/parameters/month'
+        - $ref: '#/components/parameters/year'
+        - $ref: '#/components/parameters/city'
+        - $ref: '#/components/parameters/country'
+        - $ref: '#/components/parameters/state'
+        - $ref: '#/components/parameters/x7xapikey'
+        - $ref: '#/components/parameters/annual'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/calendar_response'
+  /v1/timings/{date}:
+    get:
+      summary: Prayer Times for date
+      description: Returns all prayer times for a specific date.
+      tags:
+        - Daily
+      parameters:
+        - $ref: '#/components/parameters/date'
+        - $ref: '#/components/parameters/latitude'
+        - $ref: '#/components/parameters/longitude'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/timings_response'
+  /v1/timingsByAddress/{date}:
+    get:
+      summary: Prayer Times By Address
+      description: Returns all prayer times for a specific date at a particular address.
+      tags:
+        - Daily
+      parameters:
+        - $ref: '#/components/parameters/date'
+        - $ref: '#/components/parameters/address'
+        - $ref: '#/components/parameters/x7xapikey'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/timings_response'
+  /v1/timingsByCity/{date}:
+    get:
+      summary: Prayer Times By City
+      description: Returns all prayer times for a specific date in a particular city.
+      tags:
+        - Daily
+      parameters:
+        - $ref: '#/components/parameters/date'
+        - $ref: '#/components/parameters/city'
+        - $ref: '#/components/parameters/country'
+        - $ref: '#/components/parameters/state'
+        - $ref: '#/components/parameters/x7xapikey'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/timings_response'
+components:
+  parameters:
+    zone:
+      name: zone
+      in: query
+      required: true
+      description: A valid timezone as specified [here](http://php.net/manual/en/timezones.php).
+      schema:
+        type: string
+        example: Europe/London
+    month:
+      in: path
+      name: month
+      required: true
+      description: |
+        A gregroian or hijri calendar month
+      schema:
+        type: number
+        example: 8
+    year:
+      in: path
+      name: year
+      required: true
+      description: |
+        A gregorian or hijri calendar year
+      schema:
+        type: number
+        example: 2022
+    latitude:
+      in: query
+      name: latitude
+      required: true
+      description: |
+        The decimal value for the latitude co-ordinate of the location you want the time computed for.
+      schema:
+        type: number
+        example: 51.75865125
+    longitude:
+      in: query
+      name: longitude
+      required: true
+      description: |
+        The decimal value for the longitude co-ordinate of the location you want the time computed for.
+      schema:
+        type: number
+        example: -1.25387785
+    annual:
+      in: query
+      name: annual
+      description: |
+        If true, month parameter will be ignored and the calendar for the entire year will be returned
+      schema:
+        type: boolean
+        example: false
+        default: false
+    method:
+      in: query
+      name: method
+      description: |
+        A prayer times calculation method. Methods identify various schools of thought about how to compute the timings. If not specified, it defaults to the closest authority based on the location or co-ordinates specified in the API call. This parameter accepts values from 0-23 and 99, as specified below: <br><br> Possible values:
+        * `0` - Jafari / Shia Ithna-Ashari
+        * `1` - University of Islamic Sciences, Karachi
+        * `2` - Islamic Society of North America
+        * `3` - Muslim World League
+        * `4` - Umm Al-Qura University, Makkah
+        * `5` - Egyptian General Authority of Survey
+        * `7` - Institute of Geophysics, University of Tehran
+        * `8` - Gulf Region
+        * `9` - Kuwait
+        * `10` - Qatar
+        * `12` - Majlis Ugama Islam Singapura, Singapore
+        * `12` - Union Organization islamic de France
+        * `13` - Diyanet İşleri Başkanlığı, Turkey
+        * `14` - Spiritual Administration of Muslims of Russia
+        * `15` - Moonsighting Committee Worldwide (also requires shafaq parameter)
+        * `16` - Dubai (experimental)
+        * `17` - Jabatan Kemajuan Islam Malaysia (JAKIM)
+        * `18` - Tunisia
+        * `19` - Algeria
+        * `20` - KEMENAG - Kementerian Agama Republik Indonesia
+        * `21` - Morocco
+        * `22` - Comunidade Islamica de Lisboa
+        * `23` - Ministry of Awqaf, Islamic Affairs and Holy Places, Jordan
+        * `99` - Custom. See [https://aladhan.com/calculation-methods](https://aladhan.com/calculation-methods)
+      schema:
+        type: number
+        example: 4
+        default: 0
+        enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 19
+          - 20
+          - 21
+          - 22
+          - 23
+          - 99
+    shafaq:
+      in: query
+      name: shafaq
+      description: |
+        Which Shafaq to use if the method is Moonsighting Commitee Worldwide. Acceptable options are '`general', 'ahmer' and 'abyad'
+      schema:
+        type: string
+        example: general
+        default: general
+        enum:
+          - general
+          - ahmer
+          - abyad
+    tune:
+      in: query
+      name: tune
+      description: |
+        Comma Separated String of integers to offset timings returned by the API in minutes. The order is `Imsak,Fajr,Sunrise,Dhuhr,Asr,Maghrib,Sunset,Isha,Midnight`. See [https://aladhan.com/calculation-methods](https://aladhan.com/calculation-methods) for more details.
+      schema:
+        type: string
+        example: 5,3,5,7,9,-1,0,8,-6
+    school:
+      in: query
+      name: school
+      description: |
+        Shafi (or the standard way) or Hanafi. <br /><br /> Possible values:
+        * `0` - Shafi
+        * `1` - Hanafi
+      schema:
+        type: integer
+        default: 0
+        enum:
+          - 0
+          - 1
+    midnightMode:
+      in: query
+      name: midnightMode
+      description: |
+        Determines the method for calculating midnight <br><br> Possible values:
+        * `0` - Standard (Mid Sunset to Sunrise)
+        * `1` - Jafari (Mid Sunset to Fajr)
+      schema:
+        type: integer
+        default: 0
+        enum:
+          - 0
+          - 1
+    timezonestring:
+      in: query
+      name: timezonestring
+      description: |
+        A valid timezone name as specified on [https://php.net/manual/en/timezones.php](https://php.net/manual/en/timezones.php). <br> *If you do not specify this, we'll calcuate it using the co-ordinates you provide.*
+      schema:
+        type: string
+        example: Europe/London
+    latitudeAdjustmentMethod:
+      in: query
+      name: latitudeAdjustmentMethod
+      description: |
+        Method for adjusting times at higher latitudes. For example, if you are checking timings in the UK or Sweden. <br><br> Possible values:
+        * `1` - Middle of the Night
+        * `2` - One Seventh
+        * `3` - Angle Based
+      schema:
+        type: integer
+        enum:
+          - 1
+          - 2
+          - 3
+    adjustment:
+      in: query
+      name: adjustment
+      description: |
+        Number of days to adjust hijri date(s).
+      schema:
+        type: integer
+        example: -1
+    iso8601:
+      in: query
+      name: iso8601
+      description: |
+        Whether to return the prayer times in the iso8601 format. Example: true will return 2020-07-01T02:56:00+01:00 instead of 02:56
+      schema:
+        type: boolean
+        default: false
+    address:
+      in: query
+      name: address
+      required: true
+      description: |
+        An address string
+      schema:
+        type: string
+        example: 1420 Austin Bluffs Parkway, Colorado Springs, CO
+    x7xapikey:
+      in: query
+      name: x7xapikey
+      description: An API key from https://7x.ax to geocode the address, city and country. If you do not provide one the response will mask the geocoded co-ordinates.
+      schema:
+        type: string
+        example: 40a1da1403f3fe1848f478e1299b7xc6
+    city:
+      in: query
+      name: city
+      required: true
+      description: |
+        A city name
+      schema:
+        type: string
+        example: London
+    country:
+      in: query
+      name: country
+      required: true
+      description: |
+        A country name or 2 character alpha ISO 3166 code
+      schema:
+        type: string
+        example: GB
+    state:
+      in: query
+      name: state
+      description: |
+        State or province. A state name or abbreviation. Examples: Colorado / CO / Punjab / Bengal
+      schema:
+        type: string
+        example: London
+    date:
+      in: path
+      name: date
+      description: |
+        A date in the DD-MM-YYYY format.
+      required: true
+      schema:
+        type: string
+  schemas:
+    code:
+      type: integer
+      description: The response status code.
+      example: 200
+    status:
+      type: string
+      description: The response status description.
+      example: OK
+    current-date-success:
+      type: object
+      required:
+        - code
+        - status
+        - data
+      properties:
+        code:
+          $ref: '#/components/schemas/code'
+        status:
+          $ref: '#/components/schemas/status'
+        data:
+          type: string
+          format: date
+          pattern: dd-mm-yyyy
+          description: Current date in the specified timezone.
+          example: 23-08-2017
+    current-time-success:
+      type: object
+      required:
+        - code
+        - status
+        - data
+      properties:
+        code:
+          $ref: '#/components/schemas/code'
+        status:
+          $ref: '#/components/schemas/status'
+        data:
+          type: string
+          format: time
+          pattern: hh:mm
+          description: Current time in the specified timezone.
+          example: '05:32'
+    current-timestamp-success:
+      type: object
+      required:
+        - code
+        - status
+        - data
+      properties:
+        code:
+          $ref: '#/components/schemas/code'
+        status:
+          $ref: '#/components/schemas/status'
+        data:
+          type: string
+          description: Current epoch/unix timestamp in the specified timezone.
+          example: '1503495668'
+    latitude:
+      type: number
+      example: 51.75865125
+    longitude:
+      type: number
+      example: -1.25387785
+    methods-success:
+      type: object
+      required:
+        - code
+        - status
+        - data
+      properties:
+        code:
+          type: number
+          description: The response status code.
+          example: 200
+        status:
+          type: string
+          description: The response status description.
+          example: OK
+        data:
+          type: object
+          description: Contains a collection of key-object mapping containing details of different prayer time calculation methods.
+          properties:
+            MWL:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 3
+                name:
+                  type: string
+                  example: Muslim World League
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 18
+                    Isha:
+                      type: number
+                      example: 17
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            ISNA:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 2
+                name:
+                  type: string
+                  example: Islamic Society of North America (ISNA)
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 15
+                    Isha:
+                      type: number
+                      example: 15
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            EGYPT:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 5
+                name:
+                  type: string
+                  example: Egyptian General Authority of Survey
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 19.5
+                    Isha:
+                      type: number
+                      example: 17.5
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            MAKKAH:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 4
+                name:
+                  type: string
+                  example: Umm Al-Qura University, Makkah
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 18.5
+                    Isha:
+                      type: string
+                      example: 90 min
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            KARACHI:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                name:
+                  type: string
+                  example: University of Islamic Sciences, Karachi
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 18
+                    Isha:
+                      type: number
+                      example: 18
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            TEHRAN:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 7
+                name:
+                  type: string
+                  example: Institute of Geophysics, University of Tehran
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 17.7
+                    Maghrib:
+                      type: number
+                      example: 4.5
+                    Isha:
+                      type: number
+                      example: 14
+                    Midnight:
+                      type: string
+                      example: JAFARI
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            JAFARI:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 0
+                name:
+                  type: string
+                  example: Shia Ithna-Ashari, Leva Institute, Qum
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 16
+                    Maghrib:
+                      type: number
+                      example: 4
+                    Isha:
+                      type: number
+                      example: 14
+                    Midnight:
+                      type: string
+                      example: JAFARI
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            GULF:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 8
+                name:
+                  type: string
+                  example: Gulf Region
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 19.5
+                    Isha:
+                      type: string
+                      example: 90 min
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            KUWAIT:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 9
+                name:
+                  type: string
+                  example: Kuwait
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 18
+                    Isha:
+                      type: number
+                      example: 17.5
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            QATAR:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 10
+                name:
+                  type: string
+                  example: Qatar
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 10
+                    Isha:
+                      type: string
+                      example: 90 min
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            SINGAPORE:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 11
+                name:
+                  type: string
+                  example: Majlis Ugama Islam Singapura, Singapore
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 20
+                    Isha:
+                      type: number
+                      example: 18
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            FRANCE:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 12
+                name:
+                  type: string
+                  example: Union Organization Islamic de France
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 12
+                    Isha:
+                      type: number
+                      example: 12
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            TURKEY:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 13
+                name:
+                  type: string
+                  example: Diyanet İşleri Başkanlığı, Turkey
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 18
+                    Isha:
+                      type: number
+                      example: 17
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            RUSSIA:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 14
+                name:
+                  type: string
+                  example: Spiritual Administration of Muslims of Russia
+                params:
+                  type: object
+                  properties:
+                    Fajr:
+                      type: number
+                      example: 16
+                    Isha:
+                      type: number
+                      example: 15
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            MOONSIGHTING:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 15
+                name:
+                  type: string
+                  example: Moonsighting Committee Worldwide (Moonsighting.com)
+                params:
+                  type: object
+                  properties:
+                    shafaq:
+                      type: string
+                      example: general
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            DUBAI:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 16
+                name:
+                  type: string
+                  example: Dubai (experimental)
+                params:
+                  type: object
+                  properties:
+                    shafaq:
+                      type: string
+                      example: general
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            JAKIM:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 17
+                name:
+                  type: string
+                  example: Jabatan Kemajuan Islam Malaysia (JAKIM)
+                params:
+                  type: object
+                  properties:
+                    shafaq:
+                      type: string
+                      example: general
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            TUNISIA:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 18
+                name:
+                  type: string
+                  example: Tunisia
+                params:
+                  type: object
+                  properties:
+                    shafaq:
+                      type: string
+                      example: general
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            ALGERIA:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 19
+                name:
+                  type: string
+                  example: Algeria
+                params:
+                  type: object
+                  properties:
+                    shafaq:
+                      type: string
+                      example: general
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            KEMENAG:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 20
+                name:
+                  type: string
+                  example: Kementerian Agama Republik Indonesia
+                params:
+                  type: object
+                  properties:
+                    shafaq:
+                      type: string
+                      example: general
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            MOROCCO:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 21
+                name:
+                  type: string
+                  example: Morocco
+                params:
+                  type: object
+                  properties:
+                    shafaq:
+                      type: string
+                      example: general
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            PORTUGAL:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 22
+                name:
+                  type: string
+                  example: Comunidade Islamica de Lisboa
+                params:
+                  type: object
+                  properties:
+                    shafaq:
+                      type: string
+                      example: general
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            JORDAN:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 23
+                name:
+                  type: string
+                  example: Ministry of Awqaf, Islamic Affairs and Holy Places, Jordan
+                params:
+                  type: object
+                  properties:
+                    shafaq:
+                      type: string
+                      example: general
+                location:
+                  type: object
+                  properties:
+                    latitude:
+                      $ref: '#/components/schemas/latitude'
+                    longitude:
+                      $ref: '#/components/schemas/longitude'
+            CUSTOM:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 99
+    schemas-code:
+      type: integer
+      example: 200
+    schemas-status:
+      type: string
+      example: OK
+    timings:
+      type: object
+      properties:
+        Fajr:
+          type: string
+          example: '02:52'
+        Sunrise:
+          type: string
+          example: '05:33'
+        Dhuhr:
+          type: string
+          example: '13:18'
+        Asr:
+          type: string
+          example: '17:31'
+        Sunset:
+          type: string
+          example: '20:11'
+        Maghrib:
+          type: string
+          example: '20:10'
+        Isha:
+          type: string
+          example: '22:11'
+        Imsak:
+          type: string
+          example: '03:33'
+        Midnight:
+          type: string
+          example: '00:58'
+    returned_date_en:
+      type: string
+      example: 20-04-2022
+    format:
+      type: string
+      example: DD-MM-YYYY
+    day_en:
+      type: string
+      example: '20'
+    weekday_en:
+      type: object
+      properties:
+        en:
+          type: string
+          example: Wednesday
+          description: |
+            English name of weekday
+    month_en:
+      type: object
+      properties:
+        number:
+          type: integer
+          example: 4
+        en:
+          type: string
+          example: April
+          description: |
+            English name of the month
+    year_en:
+      type: string
+      example: '2022'
+    designation_en:
+      type: object
+      properties:
+        abbreviated:
+          type: string
+          example: AD
+        expanded:
+          type: string
+          example: Anno Domini
+    returned_date_ar:
+      type: string
+      example: 17-09-1443
+    day_ar:
+      type: string
+      example: '17'
+    weekday_en_ar:
+      type: object
+      properties:
+        en:
+          type: string
+          example: Al Arba'a
+          description: |
+            English name of weekday
+        ar:
+          type: string
+          example: الاربعاء
+          description: |
+            Arabic name of weekday
+    month_en_ar:
+      type: object
+      properties:
+        number:
+          type: integer
+          example: 9
+        en:
+          type: string
+          example: Ramaḍān
+          description: |
+            English name of the month
+        ar:
+          type: string
+          example: رَمَضان
+          description: |
+            Arabic name of the month
+    year_ar:
+      type: string
+      example: '1443'
+    designation_ar:
+      type: object
+      properties:
+        abbreviated:
+          type: string
+          example: AH
+        expanded:
+          type: string
+          example: Anno Hegirae
+    date:
+      type: object
+      properties:
+        readable:
+          type: string
+          example: 20 Apr 2022
+        timestamp:
+          type: string
+          example: '1650495506'
+        gregorian:
+          type: object
+          properties:
+            date:
+              $ref: '#/components/schemas/returned_date_en'
+            format:
+              $ref: '#/components/schemas/format'
+            day:
+              $ref: '#/components/schemas/day_en'
+            weekday:
+              $ref: '#/components/schemas/weekday_en'
+            month:
+              $ref: '#/components/schemas/month_en'
+            year:
+              $ref: '#/components/schemas/year_en'
+            designation:
+              $ref: '#/components/schemas/designation_en'
+        hijri:
+          type: object
+          properties:
+            date:
+              $ref: '#/components/schemas/returned_date_ar'
+            format:
+              $ref: '#/components/schemas/format'
+            day:
+              $ref: '#/components/schemas/day_ar'
+            weekday:
+              $ref: '#/components/schemas/weekday_en_ar'
+            month:
+              $ref: '#/components/schemas/month_en_ar'
+            year:
+              $ref: '#/components/schemas/year_ar'
+            designation:
+              $ref: '#/components/schemas/designation_ar'
+            holidays:
+              type: array
+              items:
+                type: string
+                example: 1st Day of Ramadan
+    timezone:
+      type: string
+      example: Europe/London
+      description: |
+        Timezone for all returned times
+    method:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 4
+        name:
+          type: string
+          example: Umm Al-Qura University, Makkah
+        params:
+          type: object
+          properties:
+            Fajr:
+              type: string
+              example: 18.5
+            Isha:
+              type: string
+              example: 90 min
+    latitudeAdjustmentMethod:
+      type: string
+      example: ANGLE_BASED
+    midnightMode:
+      type: string
+      example: STANDARD
+    school:
+      type: string
+      example: STANDARD
+    offset:
+      type: object
+      properties:
+        Imsak:
+          type: string
+          example: '5'
+        Fajr:
+          type: string
+          example: '3'
+        Sunrise:
+          type: string
+          example: '5'
+        Dhuhr:
+          type: string
+          example: '7'
+        Asr:
+          type: string
+          example: '9'
+        Maghrib:
+          type: string
+          example: '-1'
+        Sunset:
+          type: string
+          example: '0'
+        Isha:
+          type: string
+          example: 30 min
+        Midnight:
+          type: string
+          example: '-6'
+    meta:
+      type: object
+      properties:
+        latitude:
+          $ref: '#/components/schemas/latitude'
+        longitude:
+          $ref: '#/components/schemas/longitude'
+        timezone:
+          $ref: '#/components/schemas/timezone'
+        method:
+          $ref: '#/components/schemas/method'
+        latitudeAdjustmentMethod:
+          $ref: '#/components/schemas/latitudeAdjustmentMethod'
+        midnightMode:
+          $ref: '#/components/schemas/midnightMode'
+        school:
+          $ref: '#/components/schemas/school'
+        offset:
+          $ref: '#/components/schemas/offset'
+    result_item:
+      type: object
+      properties:
+        timings:
+          $ref: '#/components/schemas/timings'
+        date:
+          $ref: '#/components/schemas/date'
+        meta:
+          $ref: '#/components/schemas/meta'
+    calendar_data:
+      type: array
+      items:
+        $ref: '#/components/schemas/result_item'
+    calendar_response:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/schemas-code'
+        status:
+          $ref: '#/components/schemas/schemas-status'
+        data:
+          $ref: '#/components/schemas/calendar_data'
+    timings_response:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/schemas-code'
+        status:
+          $ref: '#/components/schemas/schemas-status'
+        data:
+          $ref: '#/components/schemas/result_item'

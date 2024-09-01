@@ -1,0 +1,47 @@
+openapi: 3.0.3
+
+info:
+  title: AlAdhan - Prayer Times API
+  version: 1.0.0
+  description: |
+    A RESTful API to get islamic prayer times for a given day, month or year.
+
+    The API has several endpoints to assist developers. All the endpoints return JSON and are available over `http` and `https`.
+    
+    Please note that prayer timings might not always match your local mosque or government authority. Their timings are likely tuned or adjusted. Please see `https://aladhan.com/calculation-methods` for more details.
+
+tags:
+  - name: Current Date/Time
+  - name: Prayer Times Methods
+
+servers:
+  - url: "http://api.aladhan.com"
+  - url: "https://api.aladhan.com"
+
+paths:
+  /v1/currentDate:
+    $ref: 'api/current-date-time/definition.yaml#/current-date'
+  /v1/currentTime:
+    $ref: 'api/current-date-time/definition.yaml#/current-time'
+  /v1/currentTimestamp:
+    $ref: 'api/current-date-time/definition.yaml#/current-timestamp'
+  /v1/methods:
+    $ref: 'api/prayer-times-methods/definition.yaml#/paths/prayer_times_methods'
+  /v1/calendar/{year}/{month}:
+    $ref: "api/prayer-times/definition.yaml#/paths/calendar"
+  /v1/calendarByAddress/{year}/{month}:
+    $ref: "api/prayer-times/definition.yaml#/paths/calendarByAddress"
+  /v1/calendarByCity/{year}/{month}:
+    $ref: "api/prayer-times/definition.yaml#/paths/calendarByCity"
+  /v1/hijriCalendar/{year}/{month}:
+    $ref: "api/prayer-times/definition.yaml#/paths/hijriCalendar"
+  /v1/hijriCalendarByAddress/{year}/{month}:
+    $ref: "api/prayer-times/definition.yaml#/paths/hijriCalendarByAddress"
+  /v1/hijriCalendarByCity/{year}/{month}:
+    $ref: "api/prayer-times/definition.yaml#/paths/hijriCalendarByCity"
+  /v1/timings/{date}:
+    $ref: "api/prayer-times/definition.yaml#/paths/timings"
+  /v1/timingsByAddress/{date}:
+    $ref: "api/prayer-times/definition.yaml#/paths/timingsByAddress"
+  /v1/timingsByCity/{date}:
+    $ref: "api/prayer-times/definition.yaml#/paths/timingsByCity"

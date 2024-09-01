@@ -430,3 +430,185 @@ components:
                         $ref: "#/components/schemas/latitude"
                       longitude:
                         $ref: "#/components/schemas/longitude"
+              DUBAI:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 16
+                  name:
+                    type: string
+                    example: "Dubai (experimental)"
+                  params:
+                    type: object
+                    properties:
+                      shafaq:
+                        type: string
+                        example: "general"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              JAKIM:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 17
+                  name:
+                    type: string
+                    example: "Jabatan Kemajuan Islam Malaysia (JAKIM)"
+                  params:
+                    type: object
+                    properties:
+                      shafaq:
+                        type: string
+                        example: "general"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              TUNISIA:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 18
+                  name:
+                    type: string
+                    example: "Tunisia"
+                  params:
+                    type: object
+                    properties:
+                      shafaq:
+                        type: string
+                        example: "general"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              ALGERIA:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 19
+                  name:
+                    type: string
+                    example: "Algeria"
+                  params:
+                    type: object
+                    properties:
+                      shafaq:
+                        type: string
+                        example: "general"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              KEMENAG:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 20
+                  name:
+                    type: string
+                    example: "Kementerian Agama Republik Indonesia"
+                  params:
+                    type: object
+                    properties:
+                      shafaq:
+                        type: string
+                        example: "general"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              MOROCCO:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 21
+                  name:
+                    type: string
+                    example: "Morocco"
+                  params:
+                    type: object
+                    properties:
+                      shafaq:
+                        type: string
+                        example: "general"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              PORTUGAL:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 22
+                  name:
+                    type: string
+                    example: "Comunidade Islamica de Lisboa"
+                  params:
+                    type: object
+                    properties:
+                      shafaq:
+                        type: string
+                        example: "general"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              JORDAN:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 23
+                  name:
+                    type: string
+                    example: "Ministry of Awqaf, Islamic Affairs and Holy Places, Jordan"
+                  params:
+                    type: object
+                    properties:
+                      shafaq:
+                        type: string
+                        example: "general"
+                  location:
+                    type: object
+                    properties:
+                      latitude:
+                        $ref: "#/components/schemas/latitude"
+                      longitude:
+                        $ref: "#/components/schemas/longitude"
+              CUSTOM:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 99

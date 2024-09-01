@@ -22,7 +22,7 @@ paths:
       summary: Prayer Times for date
       description: Returns all prayer times for a specific date.
       tags:
-        - Daily Timings
+        - Daily Prayer Times
       parameters:
         - $ref: '#/components/parameters/date'
         - $ref: '#/components/parameters/latitude'
@@ -48,7 +48,7 @@ paths:
       summary: Prayer Times By Address
       description: Returns all prayer times for a specific date at a particular address.
       tags:
-        - Daily Timings
+        - Daily Prayer Times
       parameters:
         - $ref: '#/components/parameters/date'
         - $ref: '#/components/parameters/address'
@@ -74,7 +74,7 @@ paths:
       summary: Prayer Times By City
       description: Returns all prayer times for a specific date in a particular city.
       tags:
-        - Daily Timings
+        - Daily Prayer Times
       parameters:
         - $ref: '#/components/parameters/date'
         - $ref: '#/components/parameters/city'
@@ -102,7 +102,7 @@ paths:
       summary: Prayer Times Calendar
       description: Returns all prayer times for a specific calendar month.
       tags:
-        - Monthly / Annual Calendar
+        - Monthly / Annual Prayer Times Calendar
       parameters:
         - $ref: '#/components/parameters/month'
         - $ref: '#/components/parameters/year'
@@ -130,7 +130,7 @@ paths:
       summary: Prayer Times Calendar by address
       description: Returns all prayer times for a specific calendar month at a particular address.
       tags:
-        - Monthly / Annual Calendar
+        - Monthly / Annual Prayer Times Calendar
       parameters:
         - $ref: '#/components/parameters/month'
         - $ref: '#/components/parameters/year'
@@ -157,7 +157,7 @@ paths:
       summary: Prayer Times Calendar by city
       description: Returns all prayer times for a specific calendar month by City.
       tags:
-        - Monthly / Annual Calendar
+        - Monthly / Annual Prayer Times Calendar
       parameters:
         - $ref: '#/components/parameters/month'
         - $ref: '#/components/parameters/year'
@@ -186,7 +186,7 @@ paths:
       summary: Hijri Prayer Times Calendar
       description: Returns all prayer times for a specific Hijri calendar month.
       tags:
-        - Monthly / Annual Calendar
+        - Monthly / Annual Prayer Times Calendar
       parameters:
         - $ref: '#/components/parameters/month'
         - $ref: '#/components/parameters/year'
@@ -214,7 +214,7 @@ paths:
       summary: Prayer Times Hijri Calendar by address
       description: Returns all prayer times for a specific Hijri calendar month at a particular address.
       tags:
-        - Monthly / Annual Calendar
+        - Monthly / Annual Prayer Times Calendar
       parameters:
         - $ref: '#/components/parameters/month'
         - $ref: '#/components/parameters/year'
@@ -242,7 +242,7 @@ paths:
       summary: Prayer Times Hijri Calendar by city
       description: Returns all prayer times for a specific Hijri calendar month by City.
       tags:
-        - Monthly / Annual Calendar
+        - Monthly / Annual Prayer Times Calendar
       parameters:
         - $ref: '#/components/parameters/month'
         - $ref: '#/components/parameters/year'

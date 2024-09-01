@@ -573,7 +573,7 @@ paths:
       summary: Prayer Times Calendar
       description: Returns all prayer times for a specific calendar month.
       tags:
-        - Monthly / Annual Calendar
+        - Monthly / Annual Prayer Times Calendar
       parameters:
         - $ref: "#/components/parameters/latitude"
         - $ref: "#/components/parameters/longitude"
@@ -601,7 +601,7 @@ paths:
       summary: Prayer Times Calendar by address
       description: Returns all prayer times for a specific calendar month at a particular address.
       tags:
-        - Monthly / Annual Calendar
+        - Monthly / Annual Prayer Times Calendar
       parameters:
         - $ref: "#/components/parameters/address"
         - $ref: "#/components/parameters/x7xapikey"
@@ -628,7 +628,7 @@ paths:
       summary: Prayer Times Calendar by city
       description: Returns all prayer times for a specific calendar month by City.
       tags:
-        - Monthly / Annual Calendar
+        - Monthly / Annual Prayer Times Calendar
       parameters:
         - $ref: "#/components/parameters/city"
         - $ref: "#/components/parameters/country"
@@ -656,7 +656,7 @@ paths:
       summary: Prayer Times Calendar
       description: Returns all prayer times for a specific calendar month.
       tags:
-        - Monthly / Annual Calendar
+        - Monthly / Annual Prayer Times Calendar
       parameters:
         - $ref: "#/components/parameters/latitude"
         - $ref: "#/components/parameters/longitude"
@@ -684,7 +684,7 @@ paths:
       summary: Prayer Times Hijri Calendar by address
       description: Returns all prayer times for a specific Hijri calendar month at a particular address.
       tags:
-        - Monthly / Annual Calendar
+        - Monthly / Annual Prayer Times Calendar
       parameters:
         - $ref: "#/components/parameters/address"
         - $ref: "#/components/parameters/x7xapikey"
@@ -712,7 +712,7 @@ paths:
       summary: Prayer Times Hijri Calendar by city
       description: Returns all prayer times for a specific Hijri calendar month by City.
       tags:
-        - Monthly / Annual Calendar
+        - Monthly / Annual Prayer Times Calendar
       parameters:
         - $ref: "#/components/parameters/city"
         - $ref: "#/components/parameters/country"

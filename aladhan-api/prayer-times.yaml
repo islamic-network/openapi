@@ -19,14 +19,12 @@ servers:
   - url: "https://api.aladhan.com"
 
 paths:
-  /v1/currentDate:
-    $ref: 'api/current-date-time/definition.yaml#/current-date'
-  /v1/currentTime:
-    $ref: 'api/current-date-time/definition.yaml#/current-time'
-  /v1/currentTimestamp:
-    $ref: 'api/current-date-time/definition.yaml#/current-timestamp'
-  /v1/methods:
-    $ref: 'api/prayer-times-methods/definition.yaml#/paths/prayer_times_methods'
+  /v1/timings/{date}:
+    $ref: "api/prayer-times/definition.yaml#/paths/timings"
+  /v1/timingsByAddress/{date}:
+    $ref: "api/prayer-times/definition.yaml#/paths/timingsByAddress"
+  /v1/timingsByCity/{date}:
+    $ref: "api/prayer-times/definition.yaml#/paths/timingsByCity"
   /v1/calendar/{year}/{month}:
     $ref: "api/prayer-times/definition.yaml#/paths/calendar"
   /v1/calendarByAddress/{year}/{month}:
@@ -39,9 +37,11 @@ paths:
     $ref: "api/prayer-times/definition.yaml#/paths/hijriCalendarByAddress"
   /v1/hijriCalendarByCity/{year}/{month}:
     $ref: "api/prayer-times/definition.yaml#/paths/hijriCalendarByCity"
-  /v1/timings/{date}:
-    $ref: "api/prayer-times/definition.yaml#/paths/timings"
-  /v1/timingsByAddress/{date}:
-    $ref: "api/prayer-times/definition.yaml#/paths/timingsByAddress"
-  /v1/timingsByCity/{date}:
-    $ref: "api/prayer-times/definition.yaml#/paths/timingsByCity"
+  /v1/currentDate:
+    $ref: 'api/current-date-time/definition.yaml#/current-date'
+  /v1/currentTime:
+    $ref: 'api/current-date-time/definition.yaml#/current-time'
+  /v1/currentTimestamp:
+    $ref: 'api/current-date-time/definition.yaml#/current-timestamp'
+  /v1/methods:
+    $ref: 'api/prayer-times-methods/definition.yaml#/paths/prayer_times_methods'

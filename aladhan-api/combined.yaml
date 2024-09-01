@@ -15,6 +15,256 @@ tags:
   - name: Current Date/Time
   - name: Prayer Times Methods
 paths:
+  /v1/timings/{date}:
+    get:
+      summary: Prayer Times for date
+      description: Returns all prayer times for a specific date.
+      tags:
+        - Daily
+      parameters:
+        - $ref: '#/components/parameters/date'
+        - $ref: '#/components/parameters/latitude'
+        - $ref: '#/components/parameters/longitude'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/timings_response'
+  /v1/timingsByAddress/{date}:
+    get:
+      summary: Prayer Times By Address
+      description: Returns all prayer times for a specific date at a particular address.
+      tags:
+        - Daily
+      parameters:
+        - $ref: '#/components/parameters/date'
+        - $ref: '#/components/parameters/address'
+        - $ref: '#/components/parameters/x7xapikey'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/timings_response'
+  /v1/timingsByCity/{date}:
+    get:
+      summary: Prayer Times By City
+      description: Returns all prayer times for a specific date in a particular city.
+      tags:
+        - Daily
+      parameters:
+        - $ref: '#/components/parameters/date'
+        - $ref: '#/components/parameters/city'
+        - $ref: '#/components/parameters/country'
+        - $ref: '#/components/parameters/state'
+        - $ref: '#/components/parameters/x7xapikey'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/timings_response'
+  /v1/calendar/{year}/{month}:
+    get:
+      summary: Prayer Times Calendar
+      description: Returns all prayer times for a specific calendar month.
+      tags:
+        - Monthly / Annual Calendar
+      parameters:
+        - $ref: '#/components/parameters/month'
+        - $ref: '#/components/parameters/year'
+        - $ref: '#/components/parameters/latitude'
+        - $ref: '#/components/parameters/longitude'
+        - $ref: '#/components/parameters/annual'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/calendar_response'
+  /v1/calendarByAddress/{year}/{month}:
+    get:
+      summary: Prayer Times Calendar by address
+      description: Returns all prayer times for a specific calendar month at a particular address.
+      tags:
+        - Monthly / Annual Calendar
+      parameters:
+        - $ref: '#/components/parameters/month'
+        - $ref: '#/components/parameters/year'
+        - $ref: '#/components/parameters/address'
+        - $ref: '#/components/parameters/x7xapikey'
+        - $ref: '#/components/parameters/annual'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/calendar_response'
+  /v1/calendarByCity/{year}/{month}:
+    get:
+      summary: Prayer Times Calendar by city
+      description: Returns all prayer times for a specific calendar month by City.
+      tags:
+        - Monthly / Annual Calendar
+      parameters:
+        - $ref: '#/components/parameters/month'
+        - $ref: '#/components/parameters/year'
+        - $ref: '#/components/parameters/city'
+        - $ref: '#/components/parameters/country'
+        - $ref: '#/components/parameters/state'
+        - $ref: '#/components/parameters/x7xapikey'
+        - $ref: '#/components/parameters/annual'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/calendar_response'
+  /v1/hijriCalendar/{year}/{month}:
+    get:
+      summary: Hijri Prayer Times Calendar
+      description: Returns all prayer times for a specific Hijri calendar month.
+      tags:
+        - Monthly / Annual Calendar
+      parameters:
+        - $ref: '#/components/parameters/month'
+        - $ref: '#/components/parameters/year'
+        - $ref: '#/components/parameters/latitude'
+        - $ref: '#/components/parameters/longitude'
+        - $ref: '#/components/parameters/annual'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/calendar_response'
+  /v1/hijriCalendarByAddress/{year}/{month}:
+    get:
+      summary: Prayer Times Hijri Calendar by address
+      description: Returns all prayer times for a specific Hijri calendar month at a particular address.
+      tags:
+        - Monthly / Annual Calendar
+      parameters:
+        - $ref: '#/components/parameters/month'
+        - $ref: '#/components/parameters/year'
+        - $ref: '#/components/parameters/address'
+        - $ref: '#/components/parameters/x7xapikey'
+        - $ref: '#/components/parameters/annual'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/calendar_response'
+  /v1/hijriCalendarByCity/{year}/{month}:
+    get:
+      summary: Prayer Times Hijri Calendar by city
+      description: Returns all prayer times for a specific Hijri calendar month by City.
+      tags:
+        - Monthly / Annual Calendar
+      parameters:
+        - $ref: '#/components/parameters/month'
+        - $ref: '#/components/parameters/year'
+        - $ref: '#/components/parameters/city'
+        - $ref: '#/components/parameters/country'
+        - $ref: '#/components/parameters/state'
+        - $ref: '#/components/parameters/x7xapikey'
+        - $ref: '#/components/parameters/annual'
+        - $ref: '#/components/parameters/method'
+        - $ref: '#/components/parameters/shafaq'
+        - $ref: '#/components/parameters/tune'
+        - $ref: '#/components/parameters/school'
+        - $ref: '#/components/parameters/midnightMode'
+        - $ref: '#/components/parameters/timezonestring'
+        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
+        - $ref: '#/components/parameters/adjustment'
+        - $ref: '#/components/parameters/iso8601'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/calendar_response'
   /v1/currentDate:
     summary: Current Date
     parameters:
@@ -309,284 +559,16 @@ paths:
                       longitude: 35.923844
                   CUSTOM:
                     id: 99
-  /v1/calendar/{year}/{month}:
-    get:
-      summary: Prayer Times Calendar
-      description: Returns all prayer times for a specific calendar month.
-      tags:
-        - Monthly / Annual Calendar
-      parameters:
-        - $ref: '#/components/parameters/month'
-        - $ref: '#/components/parameters/year'
-        - $ref: '#/components/parameters/latitude'
-        - $ref: '#/components/parameters/longitude'
-        - $ref: '#/components/parameters/annual'
-        - $ref: '#/components/parameters/method'
-        - $ref: '#/components/parameters/shafaq'
-        - $ref: '#/components/parameters/tune'
-        - $ref: '#/components/parameters/school'
-        - $ref: '#/components/parameters/midnightMode'
-        - $ref: '#/components/parameters/timezonestring'
-        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
-        - $ref: '#/components/parameters/adjustment'
-        - $ref: '#/components/parameters/iso8601'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/calendar_response'
-  /v1/calendarByAddress/{year}/{month}:
-    get:
-      summary: Prayer Times Calendar by address
-      description: Returns all prayer times for a specific calendar month at a particular address.
-      tags:
-        - Monthly / Annual Calendar
-      parameters:
-        - $ref: '#/components/parameters/month'
-        - $ref: '#/components/parameters/year'
-        - $ref: '#/components/parameters/address'
-        - $ref: '#/components/parameters/x7xapikey'
-        - $ref: '#/components/parameters/annual'
-        - $ref: '#/components/parameters/method'
-        - $ref: '#/components/parameters/shafaq'
-        - $ref: '#/components/parameters/tune'
-        - $ref: '#/components/parameters/school'
-        - $ref: '#/components/parameters/midnightMode'
-        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
-        - $ref: '#/components/parameters/adjustment'
-        - $ref: '#/components/parameters/iso8601'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/calendar_response'
-  /v1/calendarByCity/{year}/{month}:
-    get:
-      summary: Prayer Times Calendar by city
-      description: Returns all prayer times for a specific calendar month by City.
-      tags:
-        - Monthly / Annual Calendar
-      parameters:
-        - $ref: '#/components/parameters/month'
-        - $ref: '#/components/parameters/year'
-        - $ref: '#/components/parameters/city'
-        - $ref: '#/components/parameters/country'
-        - $ref: '#/components/parameters/state'
-        - $ref: '#/components/parameters/x7xapikey'
-        - $ref: '#/components/parameters/annual'
-        - $ref: '#/components/parameters/method'
-        - $ref: '#/components/parameters/shafaq'
-        - $ref: '#/components/parameters/tune'
-        - $ref: '#/components/parameters/school'
-        - $ref: '#/components/parameters/midnightMode'
-        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
-        - $ref: '#/components/parameters/adjustment'
-        - $ref: '#/components/parameters/iso8601'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/calendar_response'
-  /v1/hijriCalendar/{year}/{month}:
-    get:
-      summary: Hijri Prayer Times Calendar
-      description: Returns all prayer times for a specific Hijri calendar month.
-      tags:
-        - Monthly / Annual Calendar
-      parameters:
-        - $ref: '#/components/parameters/month'
-        - $ref: '#/components/parameters/year'
-        - $ref: '#/components/parameters/latitude'
-        - $ref: '#/components/parameters/longitude'
-        - $ref: '#/components/parameters/annual'
-        - $ref: '#/components/parameters/method'
-        - $ref: '#/components/parameters/shafaq'
-        - $ref: '#/components/parameters/tune'
-        - $ref: '#/components/parameters/school'
-        - $ref: '#/components/parameters/midnightMode'
-        - $ref: '#/components/parameters/timezonestring'
-        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
-        - $ref: '#/components/parameters/adjustment'
-        - $ref: '#/components/parameters/iso8601'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/calendar_response'
-  /v1/hijriCalendarByAddress/{year}/{month}:
-    get:
-      summary: Prayer Times Hijri Calendar by address
-      description: Returns all prayer times for a specific Hijri calendar month at a particular address.
-      tags:
-        - Monthly / Annual Calendar
-      parameters:
-        - $ref: '#/components/parameters/month'
-        - $ref: '#/components/parameters/year'
-        - $ref: '#/components/parameters/address'
-        - $ref: '#/components/parameters/x7xapikey'
-        - $ref: '#/components/parameters/annual'
-        - $ref: '#/components/parameters/method'
-        - $ref: '#/components/parameters/shafaq'
-        - $ref: '#/components/parameters/tune'
-        - $ref: '#/components/parameters/school'
-        - $ref: '#/components/parameters/midnightMode'
-        - $ref: '#/components/parameters/timezonestring'
-        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
-        - $ref: '#/components/parameters/adjustment'
-        - $ref: '#/components/parameters/iso8601'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/calendar_response'
-  /v1/hijriCalendarByCity/{year}/{month}:
-    get:
-      summary: Prayer Times Hijri Calendar by city
-      description: Returns all prayer times for a specific Hijri calendar month by City.
-      tags:
-        - Monthly / Annual Calendar
-      parameters:
-        - $ref: '#/components/parameters/month'
-        - $ref: '#/components/parameters/year'
-        - $ref: '#/components/parameters/city'
-        - $ref: '#/components/parameters/country'
-        - $ref: '#/components/parameters/state'
-        - $ref: '#/components/parameters/x7xapikey'
-        - $ref: '#/components/parameters/annual'
-        - $ref: '#/components/parameters/method'
-        - $ref: '#/components/parameters/shafaq'
-        - $ref: '#/components/parameters/tune'
-        - $ref: '#/components/parameters/school'
-        - $ref: '#/components/parameters/midnightMode'
-        - $ref: '#/components/parameters/timezonestring'
-        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
-        - $ref: '#/components/parameters/adjustment'
-        - $ref: '#/components/parameters/iso8601'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/calendar_response'
-  /v1/timings/{date}:
-    get:
-      summary: Prayer Times for date
-      description: Returns all prayer times for a specific date.
-      tags:
-        - Daily
-      parameters:
-        - $ref: '#/components/parameters/date'
-        - $ref: '#/components/parameters/latitude'
-        - $ref: '#/components/parameters/longitude'
-        - $ref: '#/components/parameters/method'
-        - $ref: '#/components/parameters/shafaq'
-        - $ref: '#/components/parameters/tune'
-        - $ref: '#/components/parameters/school'
-        - $ref: '#/components/parameters/midnightMode'
-        - $ref: '#/components/parameters/timezonestring'
-        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
-        - $ref: '#/components/parameters/adjustment'
-        - $ref: '#/components/parameters/iso8601'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/timings_response'
-  /v1/timingsByAddress/{date}:
-    get:
-      summary: Prayer Times By Address
-      description: Returns all prayer times for a specific date at a particular address.
-      tags:
-        - Daily
-      parameters:
-        - $ref: '#/components/parameters/date'
-        - $ref: '#/components/parameters/address'
-        - $ref: '#/components/parameters/x7xapikey'
-        - $ref: '#/components/parameters/method'
-        - $ref: '#/components/parameters/shafaq'
-        - $ref: '#/components/parameters/tune'
-        - $ref: '#/components/parameters/school'
-        - $ref: '#/components/parameters/midnightMode'
-        - $ref: '#/components/parameters/timezonestring'
-        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
-        - $ref: '#/components/parameters/adjustment'
-        - $ref: '#/components/parameters/iso8601'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/timings_response'
-  /v1/timingsByCity/{date}:
-    get:
-      summary: Prayer Times By City
-      description: Returns all prayer times for a specific date in a particular city.
-      tags:
-        - Daily
-      parameters:
-        - $ref: '#/components/parameters/date'
-        - $ref: '#/components/parameters/city'
-        - $ref: '#/components/parameters/country'
-        - $ref: '#/components/parameters/state'
-        - $ref: '#/components/parameters/x7xapikey'
-        - $ref: '#/components/parameters/method'
-        - $ref: '#/components/parameters/shafaq'
-        - $ref: '#/components/parameters/tune'
-        - $ref: '#/components/parameters/school'
-        - $ref: '#/components/parameters/midnightMode'
-        - $ref: '#/components/parameters/timezonestring'
-        - $ref: '#/components/parameters/latitudeAdjustmentMethod'
-        - $ref: '#/components/parameters/adjustment'
-        - $ref: '#/components/parameters/iso8601'
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/timings_response'
 components:
   parameters:
-    zone:
-      name: zone
-      in: query
+    date:
+      in: path
+      name: date
+      description: |
+        A date in the DD-MM-YYYY format.
       required: true
-      description: A valid timezone as specified [here](http://php.net/manual/en/timezones.php).
       schema:
         type: string
-        example: Europe/London
-    month:
-      in: path
-      name: month
-      required: true
-      description: |
-        A gregroian or hijri calendar month
-      schema:
-        type: number
-        example: 8
-    year:
-      in: path
-      name: year
-      required: true
-      description: |
-        A gregorian or hijri calendar year
-      schema:
-        type: number
-        example: 2022
     latitude:
       in: query
       name: latitude
@@ -605,15 +587,6 @@ components:
       schema:
         type: number
         example: -1.25387785
-    annual:
-      in: query
-      name: annual
-      description: |
-        If true, month parameter will be ignored and the calendar for the entire year will be returned
-      schema:
-        type: boolean
-        example: false
-        default: false
     method:
       in: query
       name: method
@@ -800,20 +773,336 @@ components:
       schema:
         type: string
         example: London
-    date:
+    month:
       in: path
-      name: date
-      description: |
-        A date in the DD-MM-YYYY format.
+      name: month
       required: true
+      description: |
+        A gregroian or hijri calendar month
+      schema:
+        type: number
+        example: 8
+    year:
+      in: path
+      name: year
+      required: true
+      description: |
+        A gregorian or hijri calendar year
+      schema:
+        type: number
+        example: 2022
+    annual:
+      in: query
+      name: annual
+      description: |
+        If true, month parameter will be ignored and the calendar for the entire year will be returned
+      schema:
+        type: boolean
+        example: false
+        default: false
+    zone:
+      name: zone
+      in: query
+      required: true
+      description: A valid timezone as specified [here](http://php.net/manual/en/timezones.php).
       schema:
         type: string
+        example: Europe/London
   schemas:
     code:
       type: integer
-      description: The response status code.
       example: 200
     status:
+      type: string
+      example: OK
+    timings:
+      type: object
+      properties:
+        Fajr:
+          type: string
+          example: '02:52'
+        Sunrise:
+          type: string
+          example: '05:33'
+        Dhuhr:
+          type: string
+          example: '13:18'
+        Asr:
+          type: string
+          example: '17:31'
+        Sunset:
+          type: string
+          example: '20:11'
+        Maghrib:
+          type: string
+          example: '20:10'
+        Isha:
+          type: string
+          example: '22:11'
+        Imsak:
+          type: string
+          example: '03:33'
+        Midnight:
+          type: string
+          example: '00:58'
+    returned_date_en:
+      type: string
+      example: 20-04-2022
+    format:
+      type: string
+      example: DD-MM-YYYY
+    day_en:
+      type: string
+      example: '20'
+    weekday_en:
+      type: object
+      properties:
+        en:
+          type: string
+          example: Wednesday
+          description: |
+            English name of weekday
+    month_en:
+      type: object
+      properties:
+        number:
+          type: integer
+          example: 4
+        en:
+          type: string
+          example: April
+          description: |
+            English name of the month
+    year_en:
+      type: string
+      example: '2022'
+    designation_en:
+      type: object
+      properties:
+        abbreviated:
+          type: string
+          example: AD
+        expanded:
+          type: string
+          example: Anno Domini
+    returned_date_ar:
+      type: string
+      example: 17-09-1443
+    day_ar:
+      type: string
+      example: '17'
+    weekday_en_ar:
+      type: object
+      properties:
+        en:
+          type: string
+          example: Al Arba'a
+          description: |
+            English name of weekday
+        ar:
+          type: string
+          example: الاربعاء
+          description: |
+            Arabic name of weekday
+    month_en_ar:
+      type: object
+      properties:
+        number:
+          type: integer
+          example: 9
+        en:
+          type: string
+          example: Ramaḍān
+          description: |
+            English name of the month
+        ar:
+          type: string
+          example: رَمَضان
+          description: |
+            Arabic name of the month
+    year_ar:
+      type: string
+      example: '1443'
+    designation_ar:
+      type: object
+      properties:
+        abbreviated:
+          type: string
+          example: AH
+        expanded:
+          type: string
+          example: Anno Hegirae
+    date:
+      type: object
+      properties:
+        readable:
+          type: string
+          example: 20 Apr 2022
+        timestamp:
+          type: string
+          example: '1650495506'
+        gregorian:
+          type: object
+          properties:
+            date:
+              $ref: '#/components/schemas/returned_date_en'
+            format:
+              $ref: '#/components/schemas/format'
+            day:
+              $ref: '#/components/schemas/day_en'
+            weekday:
+              $ref: '#/components/schemas/weekday_en'
+            month:
+              $ref: '#/components/schemas/month_en'
+            year:
+              $ref: '#/components/schemas/year_en'
+            designation:
+              $ref: '#/components/schemas/designation_en'
+        hijri:
+          type: object
+          properties:
+            date:
+              $ref: '#/components/schemas/returned_date_ar'
+            format:
+              $ref: '#/components/schemas/format'
+            day:
+              $ref: '#/components/schemas/day_ar'
+            weekday:
+              $ref: '#/components/schemas/weekday_en_ar'
+            month:
+              $ref: '#/components/schemas/month_en_ar'
+            year:
+              $ref: '#/components/schemas/year_ar'
+            designation:
+              $ref: '#/components/schemas/designation_ar'
+            holidays:
+              type: array
+              items:
+                type: string
+                example: 1st Day of Ramadan
+    latitude:
+      type: number
+      example: 51.75865125
+    longitude:
+      type: number
+      example: -1.25387785
+    timezone:
+      type: string
+      example: Europe/London
+      description: |
+        Timezone for all returned times
+    method:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 4
+        name:
+          type: string
+          example: Umm Al-Qura University, Makkah
+        params:
+          type: object
+          properties:
+            Fajr:
+              type: string
+              example: 18.5
+            Isha:
+              type: string
+              example: 90 min
+    latitudeAdjustmentMethod:
+      type: string
+      example: ANGLE_BASED
+    midnightMode:
+      type: string
+      example: STANDARD
+    school:
+      type: string
+      example: STANDARD
+    offset:
+      type: object
+      properties:
+        Imsak:
+          type: string
+          example: '5'
+        Fajr:
+          type: string
+          example: '3'
+        Sunrise:
+          type: string
+          example: '5'
+        Dhuhr:
+          type: string
+          example: '7'
+        Asr:
+          type: string
+          example: '9'
+        Maghrib:
+          type: string
+          example: '-1'
+        Sunset:
+          type: string
+          example: '0'
+        Isha:
+          type: string
+          example: 30 min
+        Midnight:
+          type: string
+          example: '-6'
+    meta:
+      type: object
+      properties:
+        latitude:
+          $ref: '#/components/schemas/latitude'
+        longitude:
+          $ref: '#/components/schemas/longitude'
+        timezone:
+          $ref: '#/components/schemas/timezone'
+        method:
+          $ref: '#/components/schemas/method'
+        latitudeAdjustmentMethod:
+          $ref: '#/components/schemas/latitudeAdjustmentMethod'
+        midnightMode:
+          $ref: '#/components/schemas/midnightMode'
+        school:
+          $ref: '#/components/schemas/school'
+        offset:
+          $ref: '#/components/schemas/offset'
+    result_item:
+      type: object
+      properties:
+        timings:
+          $ref: '#/components/schemas/timings'
+        date:
+          $ref: '#/components/schemas/date'
+        meta:
+          $ref: '#/components/schemas/meta'
+    timings_response:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/code'
+        status:
+          $ref: '#/components/schemas/status'
+        data:
+          $ref: '#/components/schemas/result_item'
+    calendar_data:
+      type: array
+      items:
+        $ref: '#/components/schemas/result_item'
+    calendar_response:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/code'
+        status:
+          $ref: '#/components/schemas/status'
+        data:
+          $ref: '#/components/schemas/calendar_data'
+    components-code:
+      type: integer
+      description: The response status code.
+      example: 200
+    components-status:
       type: string
       description: The response status description.
       example: OK
@@ -825,9 +1114,9 @@ components:
         - data
       properties:
         code:
-          $ref: '#/components/schemas/code'
+          $ref: '#/components/schemas/components-code'
         status:
-          $ref: '#/components/schemas/status'
+          $ref: '#/components/schemas/components-status'
         data:
           type: string
           format: date
@@ -842,9 +1131,9 @@ components:
         - data
       properties:
         code:
-          $ref: '#/components/schemas/code'
+          $ref: '#/components/schemas/components-code'
         status:
-          $ref: '#/components/schemas/status'
+          $ref: '#/components/schemas/components-status'
         data:
           type: string
           format: time
@@ -859,19 +1148,13 @@ components:
         - data
       properties:
         code:
-          $ref: '#/components/schemas/code'
+          $ref: '#/components/schemas/components-code'
         status:
-          $ref: '#/components/schemas/status'
+          $ref: '#/components/schemas/components-status'
         data:
           type: string
           description: Current epoch/unix timestamp in the specified timezone.
           example: '1503495668'
-    latitude:
-      type: number
-      example: 51.75865125
-    longitude:
-      type: number
-      example: -1.25387785
     methods-success:
       type: object
       required:
@@ -1457,286 +1740,3 @@ components:
                 id:
                   type: integer
                   example: 99
-    schemas-code:
-      type: integer
-      example: 200
-    schemas-status:
-      type: string
-      example: OK
-    timings:
-      type: object
-      properties:
-        Fajr:
-          type: string
-          example: '02:52'
-        Sunrise:
-          type: string
-          example: '05:33'
-        Dhuhr:
-          type: string
-          example: '13:18'
-        Asr:
-          type: string
-          example: '17:31'
-        Sunset:
-          type: string
-          example: '20:11'
-        Maghrib:
-          type: string
-          example: '20:10'
-        Isha:
-          type: string
-          example: '22:11'
-        Imsak:
-          type: string
-          example: '03:33'
-        Midnight:
-          type: string
-          example: '00:58'
-    returned_date_en:
-      type: string
-      example: 20-04-2022
-    format:
-      type: string
-      example: DD-MM-YYYY
-    day_en:
-      type: string
-      example: '20'
-    weekday_en:
-      type: object
-      properties:
-        en:
-          type: string
-          example: Wednesday
-          description: |
-            English name of weekday
-    month_en:
-      type: object
-      properties:
-        number:
-          type: integer
-          example: 4
-        en:
-          type: string
-          example: April
-          description: |
-            English name of the month
-    year_en:
-      type: string
-      example: '2022'
-    designation_en:
-      type: object
-      properties:
-        abbreviated:
-          type: string
-          example: AD
-        expanded:
-          type: string
-          example: Anno Domini
-    returned_date_ar:
-      type: string
-      example: 17-09-1443
-    day_ar:
-      type: string
-      example: '17'
-    weekday_en_ar:
-      type: object
-      properties:
-        en:
-          type: string
-          example: Al Arba'a
-          description: |
-            English name of weekday
-        ar:
-          type: string
-          example: الاربعاء
-          description: |
-            Arabic name of weekday
-    month_en_ar:
-      type: object
-      properties:
-        number:
-          type: integer
-          example: 9
-        en:
-          type: string
-          example: Ramaḍān
-          description: |
-            English name of the month
-        ar:
-          type: string
-          example: رَمَضان
-          description: |
-            Arabic name of the month
-    year_ar:
-      type: string
-      example: '1443'
-    designation_ar:
-      type: object
-      properties:
-        abbreviated:
-          type: string
-          example: AH
-        expanded:
-          type: string
-          example: Anno Hegirae
-    date:
-      type: object
-      properties:
-        readable:
-          type: string
-          example: 20 Apr 2022
-        timestamp:
-          type: string
-          example: '1650495506'
-        gregorian:
-          type: object
-          properties:
-            date:
-              $ref: '#/components/schemas/returned_date_en'
-            format:
-              $ref: '#/components/schemas/format'
-            day:
-              $ref: '#/components/schemas/day_en'
-            weekday:
-              $ref: '#/components/schemas/weekday_en'
-            month:
-              $ref: '#/components/schemas/month_en'
-            year:
-              $ref: '#/components/schemas/year_en'
-            designation:
-              $ref: '#/components/schemas/designation_en'
-        hijri:
-          type: object
-          properties:
-            date:
-              $ref: '#/components/schemas/returned_date_ar'
-            format:
-              $ref: '#/components/schemas/format'
-            day:
-              $ref: '#/components/schemas/day_ar'
-            weekday:
-              $ref: '#/components/schemas/weekday_en_ar'
-            month:
-              $ref: '#/components/schemas/month_en_ar'
-            year:
-              $ref: '#/components/schemas/year_ar'
-            designation:
-              $ref: '#/components/schemas/designation_ar'
-            holidays:
-              type: array
-              items:
-                type: string
-                example: 1st Day of Ramadan
-    timezone:
-      type: string
-      example: Europe/London
-      description: |
-        Timezone for all returned times
-    method:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 4
-        name:
-          type: string
-          example: Umm Al-Qura University, Makkah
-        params:
-          type: object
-          properties:
-            Fajr:
-              type: string
-              example: 18.5
-            Isha:
-              type: string
-              example: 90 min
-    latitudeAdjustmentMethod:
-      type: string
-      example: ANGLE_BASED
-    midnightMode:
-      type: string
-      example: STANDARD
-    school:
-      type: string
-      example: STANDARD
-    offset:
-      type: object
-      properties:
-        Imsak:
-          type: string
-          example: '5'
-        Fajr:
-          type: string
-          example: '3'
-        Sunrise:
-          type: string
-          example: '5'
-        Dhuhr:
-          type: string
-          example: '7'
-        Asr:
-          type: string
-          example: '9'
-        Maghrib:
-          type: string
-          example: '-1'
-        Sunset:
-          type: string
-          example: '0'
-        Isha:
-          type: string
-          example: 30 min
-        Midnight:
-          type: string
-          example: '-6'
-    meta:
-      type: object
-      properties:
-        latitude:
-          $ref: '#/components/schemas/latitude'
-        longitude:
-          $ref: '#/components/schemas/longitude'
-        timezone:
-          $ref: '#/components/schemas/timezone'
-        method:
-          $ref: '#/components/schemas/method'
-        latitudeAdjustmentMethod:
-          $ref: '#/components/schemas/latitudeAdjustmentMethod'
-        midnightMode:
-          $ref: '#/components/schemas/midnightMode'
-        school:
-          $ref: '#/components/schemas/school'
-        offset:
-          $ref: '#/components/schemas/offset'
-    result_item:
-      type: object
-      properties:
-        timings:
-          $ref: '#/components/schemas/timings'
-        date:
-          $ref: '#/components/schemas/date'
-        meta:
-          $ref: '#/components/schemas/meta'
-    calendar_data:
-      type: array
-      items:
-        $ref: '#/components/schemas/result_item'
-    calendar_response:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/schemas-code'
-        status:
-          $ref: '#/components/schemas/schemas-status'
-        data:
-          $ref: '#/components/schemas/calendar_data'
-    timings_response:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/schemas-code'
-        status:
-          $ref: '#/components/schemas/schemas-status'
-        data:
-          $ref: '#/components/schemas/result_item'

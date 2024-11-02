@@ -14,4 +14,3 @@ To generate the documentation, run the command in the project root: \
 
 ## Support and Questions
 Web - https://community.islamic.network
-Chat - https://discord.gg/FwUy69M
